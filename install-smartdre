@@ -1,0 +1,78 @@
+#! /bin/bash
+
+# Install docker
+
+# Variable distribución, esta muestra la distribución necesaria para instalar docker
+
+distribucion=$(lsb_release -cs)
+
+# Este script funciona en Ubuntu 18.04, bionic. Para Mint 20, cambiar por la siguiente:
+
+#distribucion=focal
+
+echo $distribucion
+#sudo apt update
+sudo apt install -f
+sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
+sudo apt install -f
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $distribucion stable"
+sudo apt-key fingerprint 0EBFCD88
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io -y
+clear
+sudo usermod -aG docker $USER
+
+
+# Descarga e instala el driver táctil de la pizarra en el sistema anfitrión
+# Paquetes nwfermi y xf86-input-nextwindow
+
+FILE1=nwfermi-module_0.6.5.1-0+lliurex4_amd64.deb
+FILE2=nwfermi-daemon_0.6.5.1-0+lliurex4_all.deb
+FILE3=xf86-input-nextwindow_0.3.4~precise1_amd64.deb
+
+if [ -f "$FILE1" ]; then
+    echo "$FILE1 exist."
+else
+    wget http://migasfree.educa.aragon.es/public/VX-18.04/REPOSITORIES/dists/repo-drivers-pdi/PKGS/nwfermi-module_0.6.5.1-0%2Blliurex4_amd64.deb
+fi
+
+if [ -f "$FILE2" ]; then
+    echo "$FILE2 exist."
+else
+    wget http://migasfree.educa.aragon.es/public/VX-18.04/REPOSITORIES/dists/repo-drivers-pdi/PKGS/nwfermi-daemon_0.6.5.1-0%2Blliurex4_all.deb
+fi
+
+if [ -f "$FILE3" ]; then
+    echo "$FILE3 exist."
+else
+    wget https://launchpad.net/~djpnewton/+archive/ubuntu/xf86-input-nextwindow/+files/xf86-input-nextwindow_0.3.4~precise1_amd64.deb
+fi
+clear
+#sudo dpkg -i nwfermi-0.6.5.0_amd64.deb
+sudo dpkg -i nwfermi-module_0.6.5.1-0+lliurex4_amd64.deb
+sudo apt install -f
+sudo dpkg -i nwfermi-daemon*.deb
+sudo apt install -f
+sudo dpkg -i xf86-input-nextwindow_0.3.4~precise1_amd64.deb
+
+sudo apt install -f
+clear
+
+# Descarga la imagen smartdre 
+sudo docker pull aosucas499/smartdre:0.1
+
+# Ejecutar y probar contenedor
+chmod +x smartdre
+cp smartdre ~/.config/autostart-scripts/
+chmod +x ~/.config/autostart-scripts/smartdre
+cd ~/.config/autostart-scripts/ && ./smartdre
+
+
+# Cómo usar la imagen docker en local, sin docker pull
+
+# guardar imagen en archivo .tar
+#docker save aosucas499/smartdre:0.1 > smartdre-0.1.tar
+
+#cargar imagen .tar en otro pc
+#docker load --input smartdre-0.1.tar
