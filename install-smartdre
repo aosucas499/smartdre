@@ -34,19 +34,19 @@ FILE3=xf86-input-nextwindow_0.3.4~precise1_amd64.deb
 if [ -f "$FILE1" ]; then
     echo "$FILE1 exist."
 else
-    wget http://migasfree.educa.aragon.es/public/VX-18.04/REPOSITORIES/dists/repo-drivers-pdi/PKGS/nwfermi-module_0.6.5.1-0%2Blliurex4_amd64.deb
+    wget https://github.com/aosucas499/smartdre/raw/master/nwfermi-module_0.6.5.1-0%2Blliurex4_amd64.deb
 fi
 
 if [ -f "$FILE2" ]; then
     echo "$FILE2 exist."
 else
-    wget http://migasfree.educa.aragon.es/public/VX-18.04/REPOSITORIES/dists/repo-drivers-pdi/PKGS/nwfermi-daemon_0.6.5.1-0%2Blliurex4_all.deb
+    wget https://github.com/aosucas499/smartdre/raw/master/nwfermi-daemon_0.6.5.1-0%2Blliurex4_all.deb
 fi
 
 if [ -f "$FILE3" ]; then
     echo "$FILE3 exist."
 else
-    wget https://launchpad.net/~djpnewton/+archive/ubuntu/xf86-input-nextwindow/+files/xf86-input-nextwindow_0.3.4~precise1_amd64.deb
+    wget https://github.com/aosucas499/smartdre/raw/master/xf86-input-nextwindow_0.3.4~precise1_amd64.deb
 fi
 clear
 #sudo dpkg -i nwfermi-0.6.5.0_amd64.deb
