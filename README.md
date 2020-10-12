@@ -40,7 +40,7 @@ It runs the the docker container, taking into account if the container was creat
 
 >## IMPORTANT
  Don't move this script from the folder "~/smartdre/" or it won't work
- because the autoboot file find the script in that folder
+ because the autoboot file finds the script in that folder
 
 >## IMPORTANTE
  No muevas este script de la carpeta "~/smartdre" o no funcionará
