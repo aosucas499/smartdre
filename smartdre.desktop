@@ -1,12 +1,16 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
-Encoding=UTF-8
-Version=1.0
-Name=smartdre
+Comment[es_ES]=Aplicación para que funcione el táctil de la pizarra digital
 Comment=Aplicación para que funcione el táctil de la pizarra digital
-Exec=sh -c ~/smartdre
+Encoding=UTF-8
+Exec=sh -c ~/smartdre/smartdre
 Icon=
+MimeType=
+Name[es_ES]=smartdre
+Name=smartdre
+Path=
+StartupNotify=true
 Terminal=true
+TerminalOptions=
 Type=Application
-
+Version=1.0
 
