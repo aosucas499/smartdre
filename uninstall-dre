@@ -2,8 +2,6 @@
 
 sudo rm ~/.config/autostart/smartdre.desktop
 
-sudo rm ~/smartdre
-
 sudo docker stop smartboard
 
 sudo docker rm smartboard
