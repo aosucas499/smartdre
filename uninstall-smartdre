@@ -10,7 +10,7 @@ sudo docker rmi ed9c7f460069
 
 sudo apt purge --remove nwfermi-daemon nwfermi-module xf86-input-nextwindow -y
 
-sudo apt purge --remove zero-lliurex-smart lliurex-smart
+sudo apt purge --remove zero-lliurex-smart lliurex-smart zero-lliurex-docker
 
 sudo delgroup docker
 
