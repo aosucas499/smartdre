@@ -59,19 +59,15 @@ sudo dpkg -i xf86-input-nextwindow_0.3.4~precise1_amd64.deb
 sudo apt install -f
 clear
 
-# Descarga la imagen smartdre 
+# Descarga la imagen smartdre
 sudo docker pull aosucas499/smartdre:0.1
 
 # Ejecutar y probar contenedor
 chmod +x smartdre
-cp smartdre ~
 cp smartdre.desktop ~/.config/autostart/
-sh -c ~/smartdre
-clear 
-echo ""
-echo "Reinicie el sistema o cierre sesión para que funcione la instalación"
-echo""
-
+chmod +x ~/.config/autostart/smartdre.desktop
+cd ~/config/autostart 
+./smartdre.desktop
 
 # Cómo usar la imagen docker en local, sin docker pull
 
