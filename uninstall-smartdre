@@ -6,7 +6,13 @@ sudo docker stop smartboard
 
 sudo docker rm smartboard
 
-sudo docker rmi ed9c7f460069 
+sudo docker stop smart
+
+sudo docker rm smart
+
+sudo docker rmi aosucas499/smartdre:0.2
+
+sudo docker rmi lliurex/smart:lastest
 
 sudo apt purge --remove nwfermi-daemon nwfermi-module xf86-input-nextwindow -y
 
