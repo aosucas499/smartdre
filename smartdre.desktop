@@ -1,11 +1,9 @@
 [Desktop Entry]
-Comment[es_ES]=Aplicación para que funcione el táctil de la pizarra digital
 Comment=Aplicación para que funcione el táctil de la pizarra digital
 Encoding=UTF-8
 Exec=sh -c ~/smartdre/smartdre
 Icon=
 MimeType=
-Name[es_ES]=smartdre
 Name=smartdre
 Path=
 StartupNotify=true
