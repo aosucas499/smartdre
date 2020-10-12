@@ -12,10 +12,17 @@ Gracias al equipo de Lliurex Team, basé mi dockerfile en el suyo y usé sus arc
 Thanks Lliurex Team
 lliurex.net
 
-USAGE
+## USAGE
 
-install-dre: Run at first. It installs: 
+### install-smartdre: Run first. It installs: 
 1. Docker. 
-2. Driver dependencies needed for the digital board in the host system.
-3. Docker image
-4. File to boot at init session
+2. Driver dependencies needed for the digital board in the host system. ("nwferi-daemon", "nwfermi-module" and "xf86-input-nextwindow")
+   Thanks to https://github.com/glorang, Daniel Newton and Lliurex TEAM.
+3. Docker image (aosucas499/smartdre)
+4. File to boot at init session (it copies the file smartdre.desktop to ~/.config/autostart)
+
+### smartdre
+It runs the the docker container, taking into account if the container was created or not.
+
+### smartdre.desktop
+File necessary to boot the container when the session starts. It will be copied to ~/.config/autostart, compatible with KDE and GNOME.
