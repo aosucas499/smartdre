@@ -65,7 +65,7 @@ sudo docker pull aosucas499/smartdre:0.1
 # Ejecutar y probar contenedor
 chmod +x smartdre
 cp smartdre.desktop ~/.config/autostart/
-chmod +x ~/.config/autostart/smartdre.desktop
+#chmod +x ~/.config/autostart/smartdre.desktop
 echo ""
 echo "Reinicia el sistema o cierra la sesión para que funcione"
 echo ""
