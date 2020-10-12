@@ -10,6 +10,8 @@ container_name=smartboard
 #variable nombre imagen
 image_name=aosucas499/smartdre:0.1
 
+docker stop smartboard
+
 if docker ps -a --format '{{.Names}}' | grep -Eq "^${container_name}\$"; then
    docker start ${container_name}
 
