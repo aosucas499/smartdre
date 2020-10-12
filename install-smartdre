@@ -64,9 +64,13 @@ sudo docker pull aosucas499/smartdre:0.1
 
 # Ejecutar y probar contenedor
 chmod +x smartdre
-cp smartdre ~/.config/autostart-scripts/
-chmod +x ~/.config/autostart-scripts/smartdre
-cd ~/.config/autostart-scripts/ && ./smartdre
+cp smartdre ~
+cp smartdre.desktop ~/.config/autostart/
+sh -c ~/smartdre
+clear 
+echo ""
+echo "Reinicie el sistema o cierre sesión para que funcione la instalación"
+echo""
 
 
 # Cómo usar la imagen docker en local, sin docker pull
