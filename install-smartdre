@@ -48,8 +48,8 @@ if [ -f "$FILE3" ]; then
 else
     wget https://github.com/aosucas499/smartdre/raw/master/xf86-input-nextwindow_0.3.4~precise1_amd64.deb
 fi
+
 clear
-#sudo dpkg -i nwfermi-0.6.5.0_amd64.deb
 sudo dpkg -i nwfermi-module_0.6.5.1-0+lliurex4_amd64.deb
 sudo apt install -f
 sudo dpkg -i nwfermi-daemon*.deb
