@@ -12,7 +12,7 @@ sudo docker rm smart
 
 sudo docker rmi aosucas499/smartdre:0.2
 
-sudo docker rmi lliurex/smart:lastest
+sudo docker rmi lliurex/lliurex-smart
 
 sudo apt purge --remove nwfermi-daemon nwfermi-module xf86-input-nextwindow -y
 
