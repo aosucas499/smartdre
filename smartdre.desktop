@@ -1,14 +1,9 @@
 [Desktop Entry]
-Comment=Aplicación para que funcione el táctil de la pizarra digital
-Encoding=UTF-8
-Exec=sh -c ~/smartdre/smartdre
-Icon=
-MimeType=
-Name=smartdre
-Path=
-StartupNotify=true
-Terminal=true
-TerminalOptions=
 Type=Application
-Version=1.0
-
+Exec=sh -c ~/smartdre/smartdre
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[es_ES]=smartdrev2
+Comment[es_ES]=Sin descripción
+X-GNOME-Autostart-Delay=0
