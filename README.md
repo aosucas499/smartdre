@@ -1,6 +1,6 @@
 # smartdre
 
-Developing / Testing Version
+Developing / Testing Version v2
 
 A script to download a docker image, install dependencies and run the drivers/software 
 for old digital boards "SmartBoard" in new ubuntu based distros.
@@ -21,6 +21,8 @@ lliurex.net
     cd smartdre
 
     ./install-smartdre
+    
+    ./smartdre
 
 
 ## FILES description
