@@ -30,7 +30,7 @@ lliurex.net
 ### install-smartdre: Run first. It installs: 
 1. Docker. 
 2. Driver dependencies needed for the digital board in the host system. ("nwferi-daemon", "nwfermi-module" and "xf86-input-nextwindow")
-   Thanks to https://github.com/glorang, Daniel Newton and Lliurex TEAM.
+   Thanks to Geert Lorang (https://github.com/glorang), Daniel Newton (https://launchpad.net/~djpnewton) and Lliurex TEAM (lliurex.net).
 3. Docker image (aosucas499/smartdre)
 4. File to boot at init session (it copies the file smartdre.desktop to ~/.config/autostart)
 
