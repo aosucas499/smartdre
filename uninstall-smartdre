@@ -10,7 +10,11 @@ sudo docker stop smart
 
 sudo docker rm smart
 
+sudo docker rmi aosucas499/smartdre:0.3
+
 sudo docker rmi aosucas499/smartdre:0.2
+
+sudo docker rmi aosucas499/smartdre:0.1
 
 sudo docker rmi lliurex/lliurex-smart
 
