@@ -7,7 +7,7 @@ for old digital boards "SmartBoard" in new ubuntu based distros.
 
 Docker image v3 based on Debian 7 "wheezy"
 
-Docker image v2 based on Ubuntu 12.04 "Precise" (to use this modify "install-smartdre" and chage tag :0.2)
+Docker image v2 based on Ubuntu 12.04 "Precise" (to use this modify "install-smartdre" and change tag to :0.2)
 
 Gracias al equipo de Lliurex Team, basé mi dockerfile en el suyo y usé sus archivos .deb.
 
