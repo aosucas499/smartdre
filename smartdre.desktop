@@ -4,6 +4,6 @@ Exec=sh -c ~/smartdre/smartdre
 X-GNOME-Autostart-enabled=true
 NoDisplay=false
 Hidden=false
-Name[es_ES]=smartdrev3
+Name[es_ES]=smartdrev2
 Comment[es_ES]=Sin descripción
 X-GNOME-Autostart-Delay=5
