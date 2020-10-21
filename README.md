@@ -1,6 +1,6 @@
 # smartdre
 
-Developing / Testing Version v2 (finding colaboration to try in a smartboard and give me feedback)
+Developing / Testing Version v3 (finding colaboration to try in a smartboard and give me feedback)
 
 A script to download a docker image, install dependencies and run the drivers/software 
 for old digital boards "SmartBoard" in new ubuntu based distros.
