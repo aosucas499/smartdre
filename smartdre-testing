@@ -5,10 +5,10 @@ xhost +local:root
 # Ejecutar el contenedor comprobando si ha sido creado o no
 
 #variable nombre contenedor
-container_name=testing
+container_name=testing-0.3
 
 #variable nombre imagen
-image_name=aosucas499/smartdre:testing
+image_name=aosucas499/smartdre:0.3
 
 docker stop smartboard
 docker stop testing
