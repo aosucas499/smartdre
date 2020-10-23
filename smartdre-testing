@@ -11,6 +11,7 @@ container_name=testing
 image_name=aosucas499/smartdre:testing
 
 docker stop smartboard
+docker stop testing
 
 if docker ps -a --format '{{.Names}}' | grep -Eq "^${container_name}\$"; then
    docker start ${container_name}
