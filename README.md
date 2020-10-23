@@ -1,11 +1,15 @@
 # smartdre
 
-Developing / Testing Version v3 (finding colaboration to try in a smartboard and give me feedback)
+Developing / Testing Version (finding colaboration to try in a smartboard and give me feedback)
 
 A script to download a docker image, install dependencies and run the drivers/software 
 for old digital boards "SmartBoard" in new ubuntu based distros.
 
-Docker image based on Ubuntu 12.04 "Precise"
+Docker image based on:
+
+tag 0.4: Guadalinex Next(Ubuntu Xenial)
+
+tag 0.2: Ubuntu 12.04 "Precise"
 
 Gracias al equipo de Lliurex Team, basé mi dockerfile en el suyo y usé sus archivos .deb.
 
