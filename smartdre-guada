@@ -5,12 +5,13 @@ xhost +local:root
 # Ejecutar el contenedor comprobando si ha sido creado o no
 
 #variable nombre contenedor
-container_name=smartboard
+container_name=smartboard-guada
 
 #variable nombre imagen
 image_name=aosucas499/smartdre:0.4
 
 docker stop smartboard
+docker stop smartboard-guada
 
 if docker ps -a --format '{{.Names}}' | grep -Eq "^${container_name}\$"; then
    docker start ${container_name}
