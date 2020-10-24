@@ -60,7 +60,7 @@ sudo apt install -f
 clear
 
 # Descarga la imagen smartdre
-sudo docker pull aosucas499/smartdre:0.4
+sudo docker pull aosucas499/smartdre
 
 # Ejecutar y probar contenedor
 chmod +x smartdre
@@ -74,7 +74,7 @@ echo ""
 # Cómo usar la imagen docker en local, sin docker pull
 
 # guardar imagen en archivo .tar
-#docker save aosucas499/smartdre:0.4 > smartdre-0.4.tar
+#docker save aosucas499/smartdre:0.5 > smartdre-0.5.tar
 
 #cargar imagen .tar en otro pc
-#docker load --input smartdre-0.4.tar
+#docker load --input smartdre-0.5.tar
