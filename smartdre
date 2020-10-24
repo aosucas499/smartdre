@@ -8,7 +8,7 @@ xhost +local:root
 container_name=smartboard
 
 #variable nombre imagen
-image_name=aosucas499/smartdre:0.4
+image_name=aosucas499/smartdre
 
 docker stop smartboard
 
