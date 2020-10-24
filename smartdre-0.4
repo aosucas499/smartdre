@@ -1,0 +1,43 @@
+#! /bin/bash
+# Dejar al sistema docker que acceda al entorno gráfico
+xhost +local:root
+
+# Ejecutar el contenedor comprobando si ha sido creado o no
+
+#variable nombre contenedor
+container_name=smartboard-0.4
+
+#variable nombre imagen
+image_name=aosucas499/smartdre:0.4
+
+docker stop smartboard
+
+if docker ps -a --format '{{.Names}}' | grep -Eq "^${container_name}\$"; then
+   docker start ${container_name}
+
+else
+docker run -d --privileged --net=host --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name ${container_name} ${image_name}
+fi
+
+
+#IMPORTANTE: En la SMART 480DViT una vez se observa que el icono del área de
+#notificación ha detectado la pizarra, para que esta funciona hay que activar la
+#opción “Modo multitáctil” que puede encodocker.io/aosucas499/smartdrentrar haciendo clic en:
+
+#Icono de SMART del área de notificación > Configuración de SMART > Configuración
+#del hardware de SMART > En la lista desplegable: Configuración del ratón y de
+#los gestos > Modo multitáctil
+
+#-------------------------
+
+#NOTAS:
+
+#- Cuando conecte la pizarra el icono del área de notificación puede tardar
+#  hasta 10 segundos en quitar el aspa roja lo que indica que ya se ha detectado
+#  la pizarra. Durante este proceso no hay que tocar la pizarra ya que se ha
+#  comprobado que si se hace se puede quedar bloqueado el comportaminento de los
+#  botones del ratón. Se soluciona desconectando y volviendo a conectar la
+#  pizarra.
+
+#- Cuando desconecte la pizarra espere al menos 5 segundos para volver a conectarla.
+
