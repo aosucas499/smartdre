@@ -6,6 +6,26 @@ sudo docker stop smartboard
 
 sudo docker rm smartboard
 
+sudo docker stop smartboard-testing
+
+sudo docker rm smartboard-testing
+
+sudo docker stop smartboard-0.5
+
+sudo docker rm smartboard-0.5
+
+sudo docker stop smartboard-0.4
+
+sudo docker rm smartboard-0.4
+
+sudo docker stop smartboard-0.3
+
+sudo docker rm smartboard-0.3
+
+sudo docker stop smartboard-0.2
+
+sudo docker rm smartboard-0.2
+
 sudo docker stop smart
 
 sudo docker rm smart
