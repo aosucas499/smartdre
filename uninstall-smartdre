@@ -54,6 +54,6 @@ sudo apt purge --remove nwfermi-daemon nwfermi-module xf86-input-nextwindow -y
 
 sudo apt purge --remove zero-lliurex-smart lliurex-smart zero-lliurex-docker -y
 
-sudo delgroup docker
+#sudo delgroup docker
 
-sudo apt purge --remove docker-ce docker-ce-cli containerd.io -y
+#sudo apt purge --remove docker-ce docker-ce-cli containerd.io -y
