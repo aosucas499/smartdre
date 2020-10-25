@@ -7,6 +7,8 @@ for old digital boards "SmartBoard" in new ubuntu based distros.
 
 Docker image based on:
 
+tag 0.5: Guadalinex Edu 2013 (Ubuntu Trust because precise there aren't "precise" 32 bits images)
+
 tag 0.4: Guadalinex Next(Ubuntu Xenial)
 
 tag 0.2: Ubuntu 12.04 "Precise"
