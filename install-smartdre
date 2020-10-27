@@ -28,7 +28,7 @@ sudo usermod -aG docker $USER
 # Paquetes nwfermi y xf86-input-nextwindow
 
 FILE1=nwfermi-module_0.6.5.1-0+lliurex4_amd64.deb
-FILE2=nwfermi-daemon_0.6.5.1-0+lliurex4_all.deb
+#FILE2=nwfermi-daemon_0.6.5.1-0+lliurex4_all.deb
 FILE3=xf86-input-nextwindow_0.3.4~precise1_amd64.deb
 
 if [ -f "$FILE1" ]; then
@@ -37,11 +37,11 @@ else
     wget https://github.com/aosucas499/smartdre/raw/master/nwfermi-module_0.6.5.1-0%2Blliurex4_amd64.deb
 fi
 
-if [ -f "$FILE2" ]; then
-    echo "$FILE2 exist."
-else
-    wget https://github.com/aosucas499/smartdre/raw/master/nwfermi-daemon_0.6.5.1-0%2Blliurex4_all.deb
-fi
+#if [ -f "$FILE2" ]; then
+#    echo "$FILE2 exist."
+#else
+#    wget https://github.com/aosucas499/smartdre/raw/master/nwfermi-daemon_0.6.5.1-0%2Blliurex4_all.deb
+#fi
 
 if [ -f "$FILE3" ]; then
     echo "$FILE3 exist."
@@ -52,8 +52,8 @@ fi
 clear
 sudo dpkg -i nwfermi-module_0.6.5.1-0+lliurex4_amd64.deb
 sudo apt install -f
-sudo dpkg -i nwfermi-daemon*.deb
-sudo apt install -f
+#sudo dpkg -i nwfermi-daemon*.deb
+#sudo apt install -f
 sudo dpkg -i xf86-input-nextwindow_0.3.4~precise1_amd64.deb
 
 sudo apt install -f
