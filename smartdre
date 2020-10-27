@@ -1,0 +1,72 @@
+#! /bin/bash
+# Dejar al sistema docker que acceda al entorno gráfico
+#xhost +local:root
+
+# Ejecutar el contenedor comprobando si ha sido creado o no
+
+#variable nombre contenedor
+container_name=smartboard
+
+#variable nombre imagen
+image_name=aosucas499/smartdre
+
+#variable carpeta configuración para compartir con el contenedor
+STORAGE_FOLDER=~/SMARTBOARD
+CONFIG_FOLDER=~/SMARTBOARD/config
+
+if [ -d "$STORAGE_FOLDER" ]; then
+    echo "Carpeta $STORAGE_FOLDER existe"
+else
+    echo "Creando carpeta $STORAGE_FOLDER"
+    mkdir $STORAGE_FOLDER
+fi
+
+if [ -d "$CONFIG_FOLDER" ]; then
+    echo "Carpeta $CONFIG_FOLDER existe"
+else
+    echo "Creando carpeta $CONFIG_FOLDER"
+    mkdir $CONFIG_FOLDER
+fi
+
+docker stop smartboard && docker rm smartboard
+docker stop smartboard-0.4 && docker rm smartboard-0.4
+docker stop smartboard-0.5 && docker rm smartboard-0.5
+docker stop smartboard && docker rm smartboard
+docker stop testing && docker rm testing
+
+
+
+if docker ps -a --format '{{.Names}}' | grep -Eq "^${container_name}\$"; then
+   docker start ${container_name}
+else
+docker run -d --privileged --net=host --user=$(id -u $USER):$(id -g $USER) --env="DISPLAY" --workdir="/home/$USER" --volume="/home/$USER/SMARTBOARD:/home/$USER:rw" --volume="/home/$USER/SMARTBOARD/config:/etc/xdg:rw" --volume="/etc/group:/etc/group:ro" --volume="/etc/passwd:/etc/passwd:ro" --volume="/etc/shadow:/etc/shadow:ro" --volume="/etc/sudoers.d:/etc/sudoers.d:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name ${container_name} ${image_name} 
+fi
+
+#Prueba de orientar, ejecutar en una terminal, estando sin cerrar el contenedor anterior
+#docker exec -it smartboard-0.5 bash /opt/SMART\ Technologies/SMART\ Product\ Drivers/bin/Orient
+
+
+
+
+#IMPORTANTE: En la SMART 480DViT una vez se observa que el icono del área de
+#notificación ha detectado la pizarra, para que esta funciona hay que activar la
+#opción “Modo multitáctil” que puede encodocker.io/aosucas499/smartdrentrar haciendo clic en:
+
+#Icono de SMART del área de notificación > Configuración de SMART > Configuración
+#del hardware de SMART > En la lista desplegable: Configuración del ratón y de
+#los gestos > Modo multitáctil
+
+#-------------------------
+
+#NOTAS:
+
+#- Cuando conecte la pizarra el icono del área de notificación puede tardar
+#  hasta 10 segundos en quitar el aspa roja lo que indica que ya se ha detectado
+#  la pizarra. Durante este proceso no hay que tocar la pizarra ya que se ha
+#  comprobado que si se hace se puede quedar bloqueado el comportaminento de los
+#  botones del ratón. Se soluciona desconectando y volviendo a conectar la
+#  pizarra.
+
+#- Cuando desconecte la pizarra espere al menos 5 segundos para volver a conectarla.
+
+
