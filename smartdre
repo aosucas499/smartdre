@@ -28,7 +28,7 @@ else
     mkdir $CONFIG_FOLDER
 fi
 
-docker stop smartboard && docker rm smartboard
+#docker stop smartboard && docker rm smartboard
 docker stop smartboard-0.4 && docker rm smartboard-0.4
 docker stop smartboard-0.5 && docker rm smartboard-0.5
 docker stop smartboard && docker rm smartboard
