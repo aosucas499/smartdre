@@ -23,7 +23,7 @@ else
     mkdir $STORAGE_FOLDER
 fi
 
-cp init.sh ~/SMARTBOARD
+#cp init.sh ~/SMARTBOARD
 
 #if [ -d "$CONFIG_FOLDER" ]; then
 #    echo "Carpeta $CONFIG_FOLDER existe"
