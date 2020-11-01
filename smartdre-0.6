@@ -42,7 +42,7 @@ docker stop testing && docker rm testing
 if docker ps -a --format '{{.Names}}' | grep -Eq "^${container_name}\$"; then
    docker start ${container_name}
 else
-docker run -d --privileged --net=host --user=$(id -u $USER):$(id -g $USER) -e DISPLAY="$DISPLAY" --workdir="/home/$USER" --volume="/home/$USER/SMARTBOARD:/home/$USER:rw" --volume="/etc/group:/etc/group:ro" --volume="/etc/passwd:/etc/passwd:ro" --volume="/etc/shadow:/etc/shadow:ro" --volume="/etc/sudoers.d:/etc/sudoers.d:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name ${container_name} ${image_name}
+docker run -d --privileged --net=host --user=$(id -u $USER):$(id -g $USER) -e DISPLAY="$DISPLAY" --workdir="/home/$USER" --volume="/home/$USER/SMARTBOARD:/home/$USER:rw" --volume="/etc/group:/etc/group:ro" --volume="/etc/passwd:/etc/passwd:ro" --volume="/etc/shadow:/etc/shadow:ro" --volume="/etc/sudoers.d:/etc/sudoers.d:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name ${container_name} ${image_name} 
 fi
 
 #Prueba de orientar, ejecutar en una terminal, estando sin cerrar el contenedor anterior
