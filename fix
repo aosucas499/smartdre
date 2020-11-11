@@ -1,0 +1,5 @@
+#!/bin/bash
+
+docker exec -d smartboard killall .SMARTBoardService_elf
+sleep 2
+docker exec -d smartboard screen -d -m /opt/SMART\ Technologies/SMART\ Product\ Drivers/bin/.SMARTBoardService_elf 
