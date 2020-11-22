@@ -1,6 +1,6 @@
 #! /bin/bash
 # Dejar al sistema docker que acceda al entorno gráfico
-#xhost +local:root
+xhost +local:root
 
 # Ejecutar el contenedor comprobando si ha sido creado o no
 
@@ -11,10 +11,8 @@ container_name=smartboard-0.3
 image_name=aosucas499/smartdre:0.3
 
 #variable carpeta configuración para compartir con el contenedor
-STORAGE_FOLDER=~/SMARTBOARD
-CONFIG_FOLDER=~/SMARTBOARD-config
-
-rm -r -f ~/SMARTBOARD
+STORAGE_FOLDER=/home/$USER/SMARTBOARD
+CONFIG_FOLDER=~/home/$USER/SMARTBOARD-config
 
 if [ -d "$STORAGE_FOLDER" ]; then
     echo "Carpeta $STORAGE_FOLDER existe"
@@ -23,14 +21,13 @@ else
     mkdir $STORAGE_FOLDER
 fi
 
-cp init.sh ~/SMARTBOARD
 
-if [ -d "$CONFIG_FOLDER" ]; then
-    echo "Carpeta $CONFIG_FOLDER existe"
-else
-    echo "Creando carpeta $CONFIG_FOLDER"
-    mkdir $CONFIG_FOLDER
-fi
+#if [ -d "$CONFIG_FOLDER" ]; then
+#    echo "Carpeta $CONFIG_FOLDER existe"
+#else
+#    echo "Creando carpeta $CONFIG_FOLDER"
+#    mkdir $CONFIG_FOLDER
+#fi
 
 docker stop smartboard && docker rm smartboard
 docker stop smartboard-0.3 && docker rm smartboard-0.3
@@ -43,12 +40,18 @@ docker stop testing && docker rm testing
 if docker ps -a --format '{{.Names}}' | grep -Eq "^${container_name}\$"; then
    docker start ${container_name}
 else
-docker run -d --privileged --net=host --user=$(id -u $USER):$(id -g $USER) -e DISPLAY="$DISPLAY" --volume="/run/dbus/system_bus_socket:/run/dbus/system_bus_socket" --volume="$STORAGE_FOLDER:/home/$USER:rw" --volume="$CONFIG_FOLDER:/etc/xdg:rw" --volume="/etc/group:/etc/group:ro" --volume="/etc/passwd:/etc/passwd:ro" --volume="/etc/shadow:/etc/shadow:ro" --volume="/etc/sudoers.d:/etc/sudoers.d:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name ${container_name} ${image_name} 
+
+docker run -d --privileged --net=host --user=$(id -u $USER):$(id -g $USER) -e DISPLAY="$DISPLAY" --volume="/run/dbus/system_bus_socket:/run/dbus/system_bus_socket" --volume="$STORAGE_FOLDER:/home/$USER:rw" --volume="/etc/group:/etc/group:ro" --volume="/etc/passwd:/etc/passwd:ro" --volume="/etc/shadow:/etc/shadow:ro" --volume="/etc/sudoers.d:/etc/sudoers.d:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name ${container_name} ${image_name} 
+
+#docker run -d --privileged --net=host -e DISPLAY="$DISPLAY" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name ${container_name} ${image_name} 
+
 fi
+
+#--volume="/root/lliurex-smart-storage:/etc/xdg:rw"
+#--volume="$CONFIG_FOLDER:/etc/xdg:ro"
 
 #Prueba de orientar, ejecutar en una terminal, estando sin cerrar el contenedor anterior
 #docker exec -it smartboard bash /opt/SMART\ Technologies/SMART\ Product\ Drivers/bin/Orient
-
 
 #IMPORTANTE: En la SMART 480DViT una vez se observa que el icono del área de
 #notificación ha detectado la pizarra, para que esta funciona hay que activar la
