@@ -1,11 +1,17 @@
 # smartdre
 
-Developing / Testing Version (finding colaboration to try in a smartboard and give me feedback)
++ SMART Podium 422w works 
+
++ SMART Podium 422w funciona
+
+Developing / Testing Version (finding colaboration to try in more smartboard models  and give me feedback)
 
 A script to download a docker image, install dependencies and run the drivers/software 
 for old digital boards "SmartBoard" in new ubuntu based distros.
 
 Docker image based on:
+
+tag:latest: Stable version with some models
 
 tag 0.6: Guadalinex Edu 2013 (Ubuntu Trust because there aren't "precise" 32 bits images)
 
