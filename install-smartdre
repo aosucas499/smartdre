@@ -64,7 +64,7 @@ sudo dpkg -i $FILE3
 sudo apt install -f
 
 echo ""
-echo "Ejecute la app o script smartdre para que se ejecute el docker"
+echo "Reinicie el equipo y ejecute la app o script smartdre para que se ejecute el docker"
 echo ""
 
 
