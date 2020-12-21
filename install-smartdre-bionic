@@ -4,11 +4,11 @@
 
 # Variable distribución, esta muestra la distribución necesaria para instalar docker
 
-distribucion=$(lsb_release -cs)
+#distribucion=$(lsb_release -cs)
 
 # Este script funciona en Ubuntu 18.04, bionic. Para Mint 20, cambiar por la siguiente:
 
-#distribucion=bionic
+distribucion=bionic
 
 echo $distribucion
 #sudo apt update
@@ -33,21 +33,21 @@ FILE3=xf86-input-nextwindow_0.3.4~lliurex1+focal_amd64.deb
 if [ -f "$FILE1" ]; then
     echo "$FILE1 exist."
 else
-    wget https://github.com/aosucas499/nwfermi/raw/main/focal/nwfermi-module_0.6.5.1-0%2Blliurex6%2Bfocal_amd64.deb
+    wget https://github.com/aosucas499/nwfermi/raw/main/bionic/amd64/nwfermi-module_0.6.5.1-0%2Blliurex6_amd64.deb
 fi
 
 
 if [ -f "$FILE2" ]; then
     echo "$FILE2 exist."
 else
-    wget https://github.com/aosucas499/nwfermi/raw/main/focal/nwfermi-daemon_0.6.5.1-0%2Blliurex6%2Bfocal_amd64.deb
+    wget https://github.com/aosucas499/nwfermi/raw/main/bionic/amd64/nwfermi-daemon_0.6.5.1-0%2Blliurex6_amd64.deb
 fi
 
 
 if [ -f "$FILE3" ]; then
     echo "$FILE3 exist."
 else
-    wget https://github.com/aosucas499/nwfermi/raw/main/focal/xf86-input-nextwindow_0.3.4%7Elliurex1%2Bfocal2_amd64.deb
+    wget https://github.com/aosucas499/nwfermi/raw/main/bionic/amd64/xf86-input-nextwindow_0.3.4%7Elliurex1%2Bfocal_amd64.deb
 fi
 
 
