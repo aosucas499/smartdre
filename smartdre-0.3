@@ -1,4 +1,5 @@
 #! /bin/bash
+
 # Dejar al sistema docker que acceda al entorno gráfico
 xhost +local:root
 
@@ -14,14 +15,13 @@ image_name=aosucas499/smartdre:0.3
 STORAGE_FOLDER=/home/$USER/SMARTBOARD
 CONFIG_FOLDER=~/home/$USER/SMARTBOARD-config
 
-rm -r $STORAGE_FOLDER
-
-if [ -d "$STORAGE_FOLDER" ]; then
-    echo "Carpeta $STORAGE_FOLDER existe"
-else
-    echo "Creando carpeta $STORAGE_FOLDER"
-    mkdir $STORAGE_FOLDER
-fi
+#rm -r $STORAGE_FOLDER
+#if [ -d "$STORAGE_FOLDER" ]; then
+#    echo "Carpeta $STORAGE_FOLDER existe"
+#else
+#    echo "Creando carpeta $STORAGE_FOLDER"
+#    mkdir $STORAGE_FOLDER
+#fi
 
 
 #if [ -d "$CONFIG_FOLDER" ]; then
@@ -32,7 +32,7 @@ fi
 #fi
 rm -r $STORAGE_FOLDER
 docker stop smartboard && docker rm smartboard
-docker stop smartboard-0.3 && docker rm smartboard-0.3
+docker stop smartboard-0.3 
 docker stop smartboard-0.4 && docker rm smartboard-0.4
 docker stop smartboard-0.5 && docker rm smartboard-0.5
 docker stop smartboard-0.6 && docker rm smartboard-0.6
@@ -43,9 +43,9 @@ if docker ps -a --format '{{.Names}}' | grep -Eq "^${container_name}\$"; then
    docker start ${container_name}
 else
 
-#docker run -d --privileged --net=host --user=$(id -u $USER):$(id -g $USER) -e DISPLAY="$DISPLAY" --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" --volume /run/user/$UID/bus:/run/dbus/system_bus_socket --volume="$STORAGE_FOLDER:/home/$USER:rw" --volume="/etc/group:/etc/group:ro" --volume="/etc/passwd:/etc/passwd:ro" --volume="/etc/shadow:/etc/shadow:ro" --volume="/etc/sudoers.d:/etc/sudoers.d:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name ${container_name} ${image_name} 
+#docker run -d --privileged --net=host --user=$(id -u $USER):$(id -g $USER) -e DISPLAY="$DISPLAY" --env DBUS_SESSION_BUS_ADDRESS="$DBUS_SESSION_BUS_ADDRESS" --volume /run/user/$UID/bus:/run/dbus/system_bus_socket --volume="$STORAGE_FOLDER:/home/$USER:rw" --volume="/etc/group:/etc/group:ro" --volume="/etc/passwd:/etc/passwd:ro" --volume="/etc/shadow:/etc/shadow:ro" --volume="/etc/sudoers.d:/etc/sudoers.d:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" -v /dev:/dev --name ${container_name} ${image_name} 
 
-docker run -d --privileged --net=host -e DISPLAY="$DISPLAY" --volume="/run/dbus/system_bus_socket:/run/dbus/system_bus_socket" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" --name ${container_name} ${image_name} 
+docker run -d --privileged --net=host -e DISPLAY="$DISPLAY" --volume="/run/dbus/system_bus_socket:/run/dbus/system_bus_socket" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" -v /dev:/dev --name ${container_name} ${image_name} 
 
 fi
 
