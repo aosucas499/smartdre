@@ -1,7 +1,7 @@
 # smartdre
 
-An application for <b>linux<b>, to download a <b>docker image<b>, install dependencies and run the drivers/software 
-for old digital boards <b>"SmartBoard"<b> in new <b>ubuntu<b> based distros. (Bionic and focal based systems)
+An application for <b>linux</b>, to download a <b>docker image</b>, install dependencies and run the drivers/software 
+for old digital boards <b>"SmartBoard"<b> in new <b>ubuntu</b> based distros. (Bionic and focal based systems)
 
 Working in Boards:
 + SMART Podium 422w works 
