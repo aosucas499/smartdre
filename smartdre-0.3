@@ -30,7 +30,7 @@ CONFIG_FOLDER=~/home/$USER/SMARTBOARD-config
 #    echo "Creando carpeta $CONFIG_FOLDER"
 #    mkdir $CONFIG_FOLDER
 #fi
-rm -r $STORAGE_FOLDER
+
 docker stop smartboard && docker rm smartboard
 docker stop smartboard-0.3 
 docker stop smartboard-0.4 && docker rm smartboard-0.4
