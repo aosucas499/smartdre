@@ -4,9 +4,9 @@ An application for <b>linux</b>, to run drivers/software for old digital boards 
 
 Working in Boards:
 
-+ SMART Podium 422w works 
++ SMART Podium 422w 
 
-+ SMARTBoard SB480 works 
++ SMART SB480 
 
 
 Docker image based on:
