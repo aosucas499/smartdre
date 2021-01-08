@@ -27,7 +27,7 @@ Gracias al equipo de Lliurex Team, basé mi dockerfile en el suyo y usé sus arc
 
 Thanks Lliurex Team
 
-[lliurex.net](lliurex.net)
+[lliurex.net](https://lliurex.net)
 
 [mijuanlo](https://github.com/mijuanlo)
 
@@ -49,7 +49,7 @@ Thanks Lliurex Team
 ### install-smartdre: Run first. It installs: 
 1. Docker. 
 2. Driver dependencies needed for the digital board in the host system. ("nwferi-daemon", "nwfermi-module" and "xf86-input-nextwindow").
-   Thanks to Geert Lorang (https://github.com/glorang), Daniel Newton (https://launchpad.net/~djpnewton) and Lliurex TEAM (https://lliurex.net).
+   Thanks to Geert Lorang (https://github.com/glorang), Daniel Newton (https://launchpad.net/~djpnewton) and [mijuanlo](https://github.com/mijuanlo)
 3. Docker image [aosucas499/smartdre](https://hub.docker.com/r/aosucas499/smartdre)
 4. File to boot at init session (it copies the file smartdre.desktop to ~/.config/autostart)
 
