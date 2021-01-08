@@ -1,7 +1,6 @@
 # smartdre
 
-An application for <b>linux</b>, to download a <b>docker image</b>, install dependencies and run the drivers/software 
-for old digital boards <b>"SmartBoard"</b> in new <b>ubuntu</b> based distros. (Bionic and focal based systems)
+An application for <b>linux</b>, to run drivers/software for old digital boards <b>"SmartBoard"</b> in new <b>Ubuntu</b> based distros. (Bionic and focal based systems). It downloads a <b>docker image</b>, installs dependencies and executes the drivers/software.
 
 Working in Boards:
 
@@ -35,8 +34,12 @@ Thanks Lliurex Team
     git clone https://github.com/aosucas499/smartdre.git
 
     cd smartdre
+    
+    chmod +x install-smartdre
 
     ./install-smartdre
+    
+    chmod +x smartdre
     
     ./smartdre
 
@@ -48,7 +51,7 @@ Thanks Lliurex Team
 2. Driver dependencies needed for the digital board in the host system. ("nwferi-daemon", "nwfermi-module" and "xf86-input-nextwindow").
    Thanks to Geert Lorang (https://github.com/glorang), Daniel Newton (https://launchpad.net/~djpnewton) and [mijuanlo](https://github.com/mijuanlo)
 3. Docker image [aosucas499/smartdre](https://hub.docker.com/r/aosucas499/smartdre)
-4. File to boot at init session (it copies the file smartdre.desktop to ~/.config/autostart)
+4. File to boot at init session (it copies the file smartdre.desktop to /etc/xdg/autostart)
 
 ### smartdre.desktop
 File necessary to boot the container when the session starts. Compatible with KDE and GNOME.
