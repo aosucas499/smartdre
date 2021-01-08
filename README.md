@@ -4,22 +4,24 @@
 
 + SMART Podium 422w funciona
 
-Developing / Testing Version (finding colaboration to try in more smartboard models  and give me feedback)
++ SMARTBoard SB480 works 
+
++ SMARTBoard SB480 funciona
 
 A script to download a docker image, install dependencies and run the drivers/software 
-for old digital boards "SmartBoard" in new ubuntu based distros.
+for old digital boards "SmartBoard" in new ubuntu based distros. (Bionic and focal based systems)
 
 Docker image based on:
 
 tag:latest: Stable version with some models
 
-tag 0.6: Guadalinex Edu 2013 (Ubuntu Trust because there aren't "precise" 32 bits images)
+tag 0.6: Guadalinex Edu 2013 (Ubuntu Trust because there aren't "precise" 32 bits images) STABLE
 
-tag 0.4: Guadalinex Next(Ubuntu Xenial)
+tag 0.4: Guadalinex Next(Ubuntu Xenial) UNSTABLE
 
-tag 0.3: Ubuntu 12.04 "Precise" 64bits
+tag 0.3: Ubuntu 12.04 "Precise" 64bits STABLE
 
-Gracias al equipo de Lliurex Team, basé mi dockerfile en el suyo y usé sus archivos .deb.
+Gracias al equipo de Lliurex Team, basé mi dockerfile en el suyo y usé sus archivos.
 
 Thanks Lliurex Team
 lliurex.net
