@@ -50,19 +50,12 @@ Thanks Lliurex Team
 1. Docker. 
 2. Driver dependencies needed for the digital board in the host system. ("nwferi-daemon", "nwfermi-module" and "xf86-input-nextwindow").
    Thanks to Geert Lorang (https://github.com/glorang), Daniel Newton (https://launchpad.net/~djpnewton) and Lliurex TEAM (https://lliurex.net).
-3. Docker image (aosucas499/smartdre)
+3. Docker image [aosucas499/smartdre](https://hub.docker.com/r/aosucas499/smartdre)
 4. File to boot at init session (it copies the file smartdre.desktop to ~/.config/autostart)
 
 ### smartdre.desktop
-File necessary to boot the container when the session starts. It will be copied to folder "~/.config/autostart", compatible with KDE and GNOME.
+File necessary to boot the container when the session starts. Compatible with KDE and GNOME.
 
 ### smartdre
 It runs the the docker container, taking into account if the container was created or not.
 
->## IMPORTANT
- Don't move this script from the folder "~/smartdre/" or it won't work
- because the autoboot file finds the script in that folder
-
->## IMPORTANTE
- No muevas este script de la carpeta "~/smartdre" o no funcionará
- porque el archivo de autoarranque busca este script en esa carpeta
