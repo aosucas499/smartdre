@@ -26,7 +26,10 @@ tag 0.3: Ubuntu 12.04 "Precise" 64bits STABLE
 Gracias al equipo de Lliurex Team, basé mi dockerfile en el suyo y usé sus archivos.
 
 Thanks Lliurex Team
-lliurex.net
+
+[lliurex.net](lliurex.net)
+
+[mijuanlo](https://github.com/mijuanlo)
 
 ## USAGE
 
