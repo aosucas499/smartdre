@@ -1,23 +1,19 @@
 # smartdre
 
-A script to download a docker image, install dependencies and run the drivers/software 
-for old digital boards "SmartBoard" in new ubuntu based distros. (Bionic and focal based systems)
+An application for <b>linux<b>, to download a <b>docker image<b>, install dependencies and run the drivers/software 
+for old digital boards <b>"SmartBoard"<b> in new <b>ubuntu<b> based distros. (Bionic and focal based systems)
 
 Working in Boards:
 + SMART Podium 422w works 
 
-+ SMART Podium 422w funciona
-
 + SMARTBoard SB480 works 
-
-+ SMARTBoard SB480 funciona
 
 
 Docker image based on:
 
 tag:latest: Stable version with some models
 
-tag 0.6: Guadalinex Edu 2013 (Ubuntu Trust because there aren't "precise" 32 bits images) STABLE
+tag 0.6: Guadalinex Edu 2013 (Ubuntu Trusty because there aren't "precise" 32 bits images) STABLE
 
 tag 0.4: Guadalinex Next(Ubuntu Xenial) UNSTABLE
 
