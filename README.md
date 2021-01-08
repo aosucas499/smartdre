@@ -1,5 +1,9 @@
 # smartdre
 
+A script to download a docker image, install dependencies and run the drivers/software 
+for old digital boards "SmartBoard" in new ubuntu based distros. (Bionic and focal based systems)
+
+Working in Boards:
 + SMART Podium 422w works 
 
 + SMART Podium 422w funciona
@@ -8,8 +12,6 @@
 
 + SMARTBoard SB480 funciona
 
-A script to download a docker image, install dependencies and run the drivers/software 
-for old digital boards "SmartBoard" in new ubuntu based distros. (Bionic and focal based systems)
 
 Docker image based on:
 
