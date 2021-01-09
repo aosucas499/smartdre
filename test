@@ -1,0 +1,67 @@
+#! /bin/bash
+
+clear
+# Variables de color de script
+#
+ROJO="\033[1;31m"
+NORMAL="\033[0m"
+AZUL="\033[1;34m"
+
+DISTRO=$(lsb_release -cs)
+
+echo ""	
+echo -e "${ROJO}Solicitando contraseña del usuario con derechos de administrador${NORMAL}"
+echo ""
+echo -e "${ROJO}Asking password of the user with administrations rights${NORMAL}"
+echo ""
+sudo echo ""
+
+#Instalación paquetes/drivers nwfermi en el sistema host
+#
+if [[ $DISTRO = focal ]]
+then
+	echo ""
+	echo "Tu sistema Linux está basado en Ubuntu focal"
+	echo ""
+	echo "Your system is based on Ubuntu Focal"
+	echo ""
+	sleep 4
+	#wget https://github.com/aosucas499/nwfermi/blob/main/focal/nwfermi-daemon_0.6.5.1-0%2Blliurex6%2Bfocal_amd64.deb
+	#wget https://github.com/aosucas499/nwfermi/blob/main/focal/nwfermi-module_0.6.5.1-0%2Blliurex6%2Bfocal_amd64.deb
+	#wget https://github.com/aosucas499/nwfermi/blob/main/focal/xf86-input-nextwindow_0.3.4%7Elliurex1%2Bfocal2_amd64.deb
+	sudo dpkg -i nwfermi-daemon*.deb
+	sudo dpkg -i nwfermi-module*.deb
+	sudo dpkg -i xf86*.deb
+	sudo apt install -f 
+	sudo rm *.deb
+	
+elif [[ $DISTRO = bionic ]]
+then
+	echo ""
+	echo "Tu sistema Linux está basado en Ubuntu bionic"
+	echo ""
+	echo "Your system is based on Ubuntu Bionic"
+	echo ""
+	sleep 4
+	wget https://github.com/aosucas499/nwfermi/blob/main/bionic/amd64/nwfermi-daemon_0.6.5.1-0%2Blliurex6_amd64.deb
+	wget https://github.com/aosucas499/nwfermi/blob/main/bionic/amd64/nwfermi-module_0.6.5.1-0%2Blliurex6_amd64.deb
+	wget https://github.com/aosucas499/nwfermi/blob/main/bionic/amd64/xf86-input-nextwindow_0.3.4~lliurex1%2Bfocal_amd64.deb
+	sudo dpkg -i nwfermi-daemon*.deb
+	sudo dpkg -i nwfermi-module*.deb
+	sudo dpkg -i xf86*.deb
+	sudo apt install -f 
+	sudo rm *.deb
+else
+	echo ""
+	echo "Esta instalación no es compatible con tu sistema" 
+	echo ""
+	echo "This install process is not compatible with your system"
+	echo ""
+	sleep 4
+	exit
+fi
+echo ""
+echo "continúa el script..."
+echo ""
+echo "the script continues..."
+echo ""

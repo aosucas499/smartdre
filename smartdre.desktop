@@ -1,9 +1,12 @@
 [Desktop Entry]
 Type=Application
-Exec=sh -c ~/smartdre/smartdre
+Exec=sudo /usr/bin/smartdre
+Icon=xinput_calibrator
+Terminal=false
+Name[es_ES]=SMARTBOARD_smartdre
+Comment[es_ES]=Drivers pizarras SMARTBOARD
+Categories=Education;System;Settings;
 X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=1
 NoDisplay=false
 Hidden=false
-Name[es_ES]=smartdre-v.0.5
-Comment[es_ES]=Sin descripción
-X-GNOME-Autostart-Delay=5

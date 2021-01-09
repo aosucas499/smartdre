@@ -1,70 +1,67 @@
 #! /bin/bash
 
-# Install docker
+clear
+# Variables de color de script
+#
+ROJO="\033[1;31m"
+NORMAL="\033[0m"
+AZUL="\033[1;34m"
 
-# Variable distribución, esta muestra la distribución necesaria para instalar docker
+# Este script funciona en Ubuntu 18.04, bionic y Ubuntu 20.04. Para Linux Mint cambie la variable por bionic o focal, según corresponda:
+#
+	#DISTRO=focal
+	#DISTRO=bionic
+	DISTRO=$(lsb_release -cs)
+	echo ""	
+	echo "Solicitando contraseña del usuario con derechos de administrador"
+	echo ""
+	echo "Asking password of the user with administrations rights"
+	echo ""
+	sudo echo ""
 
-distribucion=$(lsb_release -cs)
+# Borrando antiguos archivos de smartdre o lliurex-smart
+#
 
-# Este script funciona en Ubuntu 18.04, bionic. Para Mint 20, cambiar por la siguiente:
-
-#distribucion=bionic
-
-echo $distribucion
-#sudo apt update
-sudo apt install -f
-sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
-sudo apt install -f
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-#sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $distribucion stable"
-touch docker.list
-echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $distribucion stable" > docker.list
-sudo mv docker.list /etc/apt/sources.list.d/docker.list
-sudo apt-key fingerprint 0EBFCD88
-sudo apt update
-sudo apt install docker-ce docker-ce-cli containerd.io -y
-sudo usermod -aG docker $USER
-
-
-# Descarga e instala el driver táctil de la pizarra en el sistema anfitrión
-# Paquetes nwfermi y xf86-input-nextwindow
-
-FILE1=nwfermi-module_0.6.5.1-0+lliurex6_amd64.deb
-FILE2=nwfermi-daemon_0.6.5.1-0+lliurex6_amd64.deb
-FILE3=xf86-input-nextwindow_0.3.4~lliurex1+focal_amd64.deb
-
-if [ -f "$FILE1" ]; then
-    echo "$FILE1 exist."
-else
-    wget https://github.com/aosucas499/nwfermi/raw/main/focal/nwfermi-module_0.6.5.1-0%2Blliurex6%2Bfocal_amd64.deb
-fi
+# Instalar docker
+#
 
 
-if [ -f "$FILE2" ]; then
-    echo "$FILE2 exist."
-else
-    wget https://github.com/aosucas499/nwfermi/raw/main/focal/nwfermi-daemon_0.6.5.1-0%2Blliurex6%2Bfocal_amd64.deb
-fi
+	sudo apt update
+	sudo apt install -f
+	sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
+	sudo apt install -f
+	sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	#sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $DISTRO stable"
+	touch docker.list
+	echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $DISTRO stable" > docker.list
+	sudo mv docker.list /etc/apt/sources.list.d/docker.list
+	sudo apt-key fingerprint 0EBFCD88
+	sudo apt update
+	sudo apt install docker-ce docker-ce-cli containerd.io -y 
+	#sudo usermod -aG docker $USER
+	sudo rm /etc/apt/sources.list.d/docker.list
+
+# Hacer la aplicación iniciable en cada reinicio y usable para cualquier usuario sin "sudo"
+#
+	sudo cp smartdre /usr/bin
+    	sudo chmod +x /usr/bin/smartdre
+    	sudo chown root:root zz-smartdre
+    	sudo chmod 0440 zz-smartdre
+    	sudo cp zz-smartdre /etc/sudoers.d/ 
+    	sudo cp smartdre.desktop /etc/xdg/autostart/
+    	sudo cp smartdre.desktop /usr/share/applications/
 
 
-if [ -f "$FILE3" ]; then
-    echo "$FILE3 exist."
-else
-    wget https://github.com/aosucas499/nwfermi/raw/main/focal/xf86-input-nextwindow_0.3.4%7Elliurex1%2Bfocal2_amd64.deb
-fi
+# Notificaciones al terminar
+#
+	echo ""
+	echo "Reinicie el equipo para que se ejecute la aplicación"
+	echo ""
+	sudo notify-send "Reinicie el equipo para que se ejecute la aplicación"
 
 
 
-sudo dpkg -i $FILE1
-sudo apt install -f
-sudo dpkg -i $FILE2
-sudo apt install -f
-sudo dpkg -i $FILE3
 
-sudo apt install -f
 
-echo ""
-echo "Reinicie el equipo y ejecute la app o script smartdre para que se ejecute el docker"
-echo ""
 
 

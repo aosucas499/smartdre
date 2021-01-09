@@ -1,6 +1,32 @@
 #! /bin/bash
 
-sudo rm ~/.config/autostart/smartdre.desktop
+# Borrado de archivos anteriores de smartdre o lliurex-smart
+#
+echo ""
+echo "Borrando antiguos archivos de smartdre o lliurex-smart"
+echo ""
+echo "Deleting old files from smartdre or lliurex-smart"
+echo ""
+sleep 3
+##
+#
+sudo rm /etc/xdg/autostart/smartdre.desktop
+
+sudo rm /usr/share/applications/smartdre.desktop
+
+sudo rm /usr/bin/smartdre
+
+sudo rm /etc/sudoers.d/zz-smartdre
+
+sudo rm /etc/xdg/autostart/zz-lliurex-smart.desktop
+
+sudo rm /usr/share/applications/zz-lliurex-smart.desktop
+
+sudo rm /etc/xdg/autostart/lliurex-smar*
+
+sudo rm /usr/share/applications/lliurex-smar*
+
+sudo rm /usr/bin/lliurex-smart
 
 sudo docker stop smartboard
 
@@ -9,6 +35,10 @@ sudo docker rm smartboard
 sudo docker stop smartboard-testing
 
 sudo docker rm smartboard-testing
+
+sudo docker stop smartboard-0.6
+
+sudo docker rm smartboard-0.6
 
 sudo docker stop smartboard-0.5
 
@@ -38,6 +68,8 @@ sudo docker rmi aosucas499/smartdre:testing
 
 sudo docker rmi aosucas499/smartdre
 
+sudo docker rmi aosucas499/smartdre:0.6
+
 sudo docker rmi aosucas499/smartdre:0.5
 
 sudo docker rmi aosucas499/smartdre:0.4
@@ -53,6 +85,8 @@ sudo docker rmi lliurex/lliurex-smart
 sudo apt purge --remove nwfermi-daemon nwfermi-module xf86-input-nextwindow -y
 
 sudo apt purge --remove zero-lliurex-smart lliurex-smart zero-lliurex-docker -y
+
+sudo rm /etc/apt/sources.list.d/docker.list
 
 #sudo delgroup docker
 
