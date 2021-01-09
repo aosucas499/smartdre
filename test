@@ -21,47 +21,41 @@ sudo echo ""
 if [[ $DISTRO = focal ]]
 then
 	echo ""
-	echo "Tu sistema Linux está basado en Ubuntu focal"
+	echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu focal${NORMAL}"
 	echo ""
-	echo "Your system is based on Ubuntu Focal"
+	echo -e "${AZUL}Your system is based on Ubuntu Focal${NORMAL}"
 	echo ""
 	sleep 4
-	#wget https://github.com/aosucas499/nwfermi/blob/main/focal/nwfermi-daemon_0.6.5.1-0%2Blliurex6%2Bfocal_amd64.deb
-	#wget https://github.com/aosucas499/nwfermi/blob/main/focal/nwfermi-module_0.6.5.1-0%2Blliurex6%2Bfocal_amd64.deb
-	#wget https://github.com/aosucas499/nwfermi/blob/main/focal/xf86-input-nextwindow_0.3.4%7Elliurex1%2Bfocal2_amd64.deb
-	sudo dpkg -i nwfermi-daemon*.deb
-	sudo dpkg -i nwfermi-module*.deb
-	sudo dpkg -i xf86*.deb
-	sudo apt install -f 
-	sudo rm *.deb
+	git clone https://github.com/aosucas499/nwfermi
+	cd nwfermi
+	chmod +x nwfermi-focal.sh
+	sudo ./nwfermi-focal.sh
+	sudo rm -r nwfermi
 	
 elif [[ $DISTRO = bionic ]]
 then
 	echo ""
-	echo "Tu sistema Linux está basado en Ubuntu bionic"
+	echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu bionic${NORMAL}"
 	echo ""
-	echo "Your system is based on Ubuntu Bionic"
+	echo -e "${AZUL}Your system is based on Ubuntu Bionic${NORMAL}"
 	echo ""
 	sleep 4
-	wget https://github.com/aosucas499/nwfermi/blob/main/bionic/amd64/nwfermi-daemon_0.6.5.1-0%2Blliurex6_amd64.deb
-	wget https://github.com/aosucas499/nwfermi/blob/main/bionic/amd64/nwfermi-module_0.6.5.1-0%2Blliurex6_amd64.deb
-	wget https://github.com/aosucas499/nwfermi/blob/main/bionic/amd64/xf86-input-nextwindow_0.3.4~lliurex1%2Bfocal_amd64.deb
-	sudo dpkg -i nwfermi-daemon*.deb
-	sudo dpkg -i nwfermi-module*.deb
-	sudo dpkg -i xf86*.deb
-	sudo apt install -f 
-	sudo rm *.deb
+	git clone https://github.com/aosucas499/nwfermi
+	cd nwfermi
+	chmod +x nwfermi-bionic.sh
+	sudo ./nwfermi-bionic.sh
+	sudo rm -r nwfermi
 else
 	echo ""
-	echo "Esta instalación no es compatible con tu sistema" 
+	echo -e "${ROJO}Esta instalación no es compatible con tu sistema${NORMAL}" 
 	echo ""
-	echo "This install process is not compatible with your system"
+	echo -e "${ROJO}This install process is not compatible with your system${NORMAL}"
 	echo ""
 	sleep 4
 	exit
 fi
 echo ""
-echo "continúa el script..."
+echo -e "${AZUL}continúa el script...${NORMAL}"
 echo ""
-echo "the script continues..."
+echo -e "${AZUL}the script continues...${NORMAL}"
 echo ""
