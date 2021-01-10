@@ -1,13 +1,17 @@
-# smartdre
+# smartdre - SMARTBOARD drivers
 
 An application for <b>linux</b>, to run drivers/software for old digital boards <b>"SmartBoard"</b> in new <b>Ubuntu</b> based distros. (Bionic and focal based systems). It downloads a <b>docker image</b>, installs dependencies and executes the drivers/software.
 
-Working in Boards:
+### Working in Boards:
 
 + SMART Podium 422w 
 
 + SMART SB480 
 
+### Linux compatible systems:
+
++ Ubuntu Focal and Bionic
++ Linux Mint based in Ubuntu Focal and Bionic 
 
 Docker image based on:
 
