@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Exec=sudo /usr/bin/controlpanel
+Icon=/var/lib/app-info/icons/ubuntu-focal-main/64x64/gddccontrol_gddccontrol.png
+Terminal=false
+Name[es_ES]=SMARTBOARD Panel de control
+Comment[es_ES]=Panel de control SMARTBOARD
+Categories=Education;System;Settings;
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=1
+NoDisplay=false
+Hidden=false

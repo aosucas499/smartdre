@@ -1,0 +1,2 @@
+#! /bin/bash
+sudo docker exec -d smartboard bash /opt/SMART\ Technologies/SMART\ Product\ Drivers/bin/Control\ Panel

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Exec=sudo /usr/bin/orient
+Icon=/var/lib/app-info/icons/ubuntu-focal-main/64x64/xinput-calibrator_xinput_calibrator.png
+Terminal=false
+Name[es_ES]=SMARTBOARD Orientar
+Comment[es_ES]=Orientar pizarras SMARTBOARD
+Categories=Education;System;Settings;
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=1
+NoDisplay=false
+Hidden=false

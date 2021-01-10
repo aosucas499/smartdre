@@ -1,2 +1,2 @@
 #! /bin/bash
-docker exec -d smartboard bash /opt/SMART\ Technologies/SMART\ Product\ Drivers/bin/Orient
+sudo docker exec -d smartboard bash /opt/SMART\ Technologies/SMART\ Product\ Drivers/bin/Orient

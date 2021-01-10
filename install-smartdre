@@ -50,6 +50,7 @@ DISTRO=$(lsb_release -cs)
 		echo ""
 		sleep 4
 		sudo apt-get install git -y
+		sudo apt-get install dkms -y
 		git clone https://github.com/aosucas499/nwfermi
 		cd nwfermi
 		chmod +x nwfermi-bionic.sh
@@ -118,7 +119,24 @@ DISTRO=$(lsb_release -cs)
     	sudo cp zz-smartdre /etc/sudoers.d/ 
     	sudo cp smartdre.desktop /etc/xdg/autostart/
     	sudo cp smartdre.desktop /usr/share/applications/
-
+    	
+# Crear apps y links para orientar y el panel de control de la pizarra en sistemas sin el icono en la barra de tareas
+# Por ejemplo Ubuntu Focal y EducaAndOS
+#	
+	sudo cp orient /usr/bin
+    	sudo chmod +x /usr/bin/orient
+    	sudo chown root:root zz-orient
+    	sudo chmod 0440 zz-orient
+    	sudo cp zz-orient /etc/sudoers.d/ 
+    	sudo cp smartdre-orient.desktop /usr/share/applications/
+    	
+    	sudo cp controlpanel /usr/bin
+    	sudo chmod +x /usr/bin/controlpanel
+    	sudo chown root:root zz-controlpanel
+    	sudo chmod 0440 zz-controlpanel
+    	sudo cp zz-controlpanel /etc/sudoers.d/ 
+    	sudo cp smartdre-controlpanel.desktop /usr/share/applications/
+    	
 # Notificaciones al terminar
 #
 	echo ""
