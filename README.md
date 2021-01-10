@@ -1,6 +1,6 @@
 # smartdre - SMARTBOARD drivers
 
-An application for <b>linux</b>, to run drivers/software for old digital boards <b>"SmartBoard"</b> in new <b>Ubuntu</b> based distros. (Bionic and focal based systems). It downloads a <b>docker image</b>, installs dependencies and executes the drivers/software.
+An application for <b>linux</b>, to run drivers/software for old digital boards <b>"SmartBoard"</b> in new <b>Ubuntu</b> based distros. (Bionic and focal based systems). It downloads a <b>docker image</b>, installs dependencies and executes the drivers/software. The aplication run at every startup.
 
 ### Working in Boards:
 
@@ -58,4 +58,10 @@ File necessary to boot the container when the session starts. Compatible with KD
 
 ### smartdre
 It runs the the docker container, taking into account if the container was created or not.
+
+### controlpanel
+It runs the controlpanel smartboard, it is necessary for systems without systemtrayicon (Gnome 3.2x)
+
+### orient
+It runs the application to orient the board, it is necessary for systems without systemtrayicon (Gnome 3.2x)
 
