@@ -21,9 +21,9 @@ sudo echo ""
 if [[ $DISTRO = focal || ulyana || ulyssa ]]
 then
 	echo ""
-	echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu focal${NORMAL}"
+	echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu focal, instalando drivers...${NORMAL}"
 	echo ""
-	echo -e "${AZUL}Your system is based on Ubuntu Focal${NORMAL}"
+	echo -e "${AZUL}Your system is based on Ubuntu Focal, installing drivers...${NORMAL}"
 	echo ""
 	sleep 4
 	git clone https://github.com/aosucas499/nwfermi
@@ -35,9 +35,9 @@ then
 elif [[ $DISTRO = bionic || tricia || tina || tessa || tara ]]
 then
 	echo ""
-	echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu bionic${NORMAL}"
+	echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu bionic, instalando drivers...${NORMAL}"
 	echo ""
-	echo -e "${AZUL}Your system is based on Ubuntu Bionic${NORMAL}"
+	echo -e "${AZUL}Your system is based on Ubuntu Bionic, installing drivers...${NORMAL}"
 	echo ""
 	sleep 4
 	git clone https://github.com/aosucas499/nwfermi
