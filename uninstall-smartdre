@@ -3,9 +3,9 @@
 # Borrado de archivos anteriores de smartdre o lliurex-smart
 #
 echo ""
-echo "Borrando antiguos archivos de smartdre o lliurex-smart"
+echo -e "${ROJO}Borrando antiguos archivos de smartdre o lliurex-smart${NORMAL}"
 echo ""
-echo "Deleting old files from smartdre or lliurex-smart"
+echo -e "${ROJO}Deleting old files from smartdre or lliurex-smart${NORMAL}"
 echo ""
 sleep 3
 ##
