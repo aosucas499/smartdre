@@ -45,6 +45,35 @@ then
 	chmod +x nwfermi-bionic.sh
 	sudo ./nwfermi-bionic.sh
 	sudo rm -r nwfermi
+	
+elif [[ $DISTRO = ulyana ]]
+then
+	echo ""
+	echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu focal${NORMAL}"
+	echo ""
+	echo -e "${AZUL}Your system is based on Ubuntu Focal${NORMAL}"
+	echo ""
+	sleep 4
+	git clone https://github.com/aosucas499/nwfermi
+	cd nwfermi
+	chmod +x nwfermi-focal.sh
+	sudo ./nwfermi-focal.sh
+	sudo rm -r nwfermi
+	
+elif [[ $DISTRO = ulyssa ]]
+then
+	echo ""
+	echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu focal${NORMAL}"
+	echo ""
+	echo -e "${AZUL}Your system is based on Ubuntu Focal${NORMAL}"
+	echo ""
+	sleep 4
+	git clone https://github.com/aosucas499/nwfermi
+	cd nwfermi
+	chmod +x nwfermi-focal.sh
+	sudo ./nwfermi-focal.sh
+	sudo rm -r nwfermi
+
 else
 	echo ""
 	echo -e "${ROJO}Esta instalación no es compatible con tu sistema${NORMAL}" 
