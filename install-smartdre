@@ -19,6 +19,11 @@ DISTRO=$(lsb_release -cs)
 	
 # Borrando antiguos archivos de smartdre o lliurex-smart
 #
+	echo ""	
+	echo -e "${ROJO}Borrando si existen archivos de anteriores instalaciones${NORMAL}"
+	echo ""
+	echo -e "${ROJO} Deleting if there are files from previous installations${NORMAL}"
+	echo ""
 	sudo chmod +x uninstall-smartdre
 	sudo ./uninstall-smartdre
 	
