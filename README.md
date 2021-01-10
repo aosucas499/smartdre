@@ -23,9 +23,10 @@ tag 0.4: Guadalinex Next(Ubuntu Xenial) UNSTABLE
 
 tag 0.3: Ubuntu 12.04 "Precise" 64bits STABLE
 
-Gracias al equipo de Lliurex Team, basé mi dockerfile en el suyo y usé sus archivos.
 
-Thanks [Lliurex Team](https://portal.edu.gva.es/lliurex/va/) and [mijuanlo](https://github.com/mijuanlo)
+<b>Gracias</b> al equipo de Lliurex Team, basé mi dockerfile en el suyo y usé sus archivos.
+
+<b>Thanks to</b> [Lliurex Team](https://portal.edu.gva.es/lliurex/va/) and [mijuanlo](https://github.com/mijuanlo)
 
 ## USAGE
 
