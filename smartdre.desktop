@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Exec=sudo /usr/bin/smartdre
-Icon=xinput_calibrator
+Icon=/var/lib/app-info/icons/ubuntu-focal-main/64x64/xinput-calibrator_xinput_calibrator.png
 Terminal=false
 Name[es_ES]=SMARTBOARD_smartdre
 Comment[es_ES]=Drivers pizarras SMARTBOARD
