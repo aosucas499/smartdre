@@ -30,7 +30,9 @@ tag 0.3: Ubuntu 12.04 "Precise" 64bits STABLE
 
 ## USAGE
 
-    cd ~ 
+    sudo apt-get update -y
+    
+    sudo apt-get install git -y
 
     git clone https://github.com/aosucas499/smartdre.git
 
@@ -40,10 +42,7 @@ tag 0.3: Ubuntu 12.04 "Precise" 64bits STABLE
 
     ./install-smartdre
     
-    chmod +x smartdre
-    
-    ./smartdre
-
+    sudo reboot (Reboot the system - Reiniciar el sistema)
 
 ## FILES description
 
