@@ -148,3 +148,8 @@ DISTRO=$(lsb_release -cs)
 	echo -e "${ROJO}Reinicie el equipo para que se ejecute la aplicación${NORMAL}"
 	echo ""
 	sudo notify-send "Reinicie el equipo para que se ejecute la aplicación"
+	
+# Borrar los repositorios de git y archivos de instalación
+#
+	cd ..
+	sudo rm -r smartdre
