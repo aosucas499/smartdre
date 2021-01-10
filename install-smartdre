@@ -33,6 +33,7 @@ DISTRO=$(lsb_release -cs)
 		echo ""
 		sleep 4
 		sudo apt-get install git -y
+		sudo apt-get install dkms -y
 		git clone https://github.com/aosucas499/nwfermi
 		cd nwfermi
 		chmod +x nwfermi-focal.sh
