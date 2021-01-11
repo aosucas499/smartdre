@@ -151,5 +151,5 @@ DISTRO=$(lsb_release -cs)
 	
 # Borrar los repositorios de git y archivos de instalación
 #
-	cd ..
+	cd ~
 	sudo rm -r smartdre
