@@ -28,6 +28,8 @@ tag 0.3: Ubuntu 12.04 "Precise" 64bits STABLE
 
 <b>Thanks to</b> [Lliurex Team](https://portal.edu.gva.es/lliurex/va/) and [mijuanlo](https://github.com/mijuanlo)
 
+![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/ubuntu_smartdre.png)
+
 ## USAGE
 
     sudo apt-get update -y
