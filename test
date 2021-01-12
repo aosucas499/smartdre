@@ -1,0 +1,64 @@
+#! /bin/bash
+
+clear
+# Variables 
+#
+ROJO="\033[1;31m"
+NORMAL="\033[0m"
+AZUL="\033[1;34m"
+DISTRO=$(lsb_release -cs)
+
+# Este script funciona en Ubuntu 18.04, bionic y Ubuntu 20.04, así como las derivadas en linux Mint.
+#
+	echo ""	
+	echo -e "${ROJO}Solicitando contraseña del usuario con derechos de administrador${NORMAL}"
+	echo ""
+	echo -e "${ROJO}Asking password of the user with administrations rights${NORMAL}"
+	echo ""
+	sudo echo ""
+	
+# Borrando antiguos archivos de smartdre o lliurex-smart
+#
+	echo ""	
+	echo -e "${ROJO}Borrando si existen archivos de anteriores instalaciones${NORMAL}"
+	echo ""
+	echo -e "${ROJO} Deleting if there are files from previous installations${NORMAL}"
+	echo ""
+	sudo chmod +x uninstall-smartdre
+	#sudo ./uninstall-smartdre
+	
+#Instalación paquetes/drivers nwfermi en el sistema host
+#
+	if [[ $DISTRO = focal || ulyana ]]
+	then
+		echo ""
+		echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu focal, instalando drivers...${NORMAL}"
+		echo ""
+		echo -e "${AZUL}Your system is based on Ubuntu Focal, installing drivers...${NORMAL}"
+		echo ""
+	
+	
+	elif [[ $DISTRO = bionic || tricia ]]
+	then
+		echo ""
+		echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu bionic, instalando drivers...${NORMAL}"
+		echo ""
+		echo -e "${AZUL}Your system is based on Ubuntu Bionic, installing drivers...${NORMAL}"
+		echo ""
+		
+		
+	
+	else
+		echo ""
+		echo -e "${ROJO}Esta instalación no es compatible con tu sistema${NORMAL}" 
+		echo ""
+		echo -e "${ROJO}This install process is not compatible with your system${NORMAL}"
+		echo ""
+		exit
+	fi
+
+	echo ""
+	echo -e "${AZUL}continúa el script...${NORMAL}"
+	echo ""
+	echo -e "${AZUL}the script continues...${NORMAL}"
+	echo ""
