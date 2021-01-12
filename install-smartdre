@@ -26,7 +26,14 @@ DISTRO=$(lsb_release -cs)
 		sleep 4
 		exit
     	fi
-    
+
+	echo ""
+	echo System codename $DISTRO
+    	echo ""
+	echo System based on Ubuntu $BASED
+	echo ""
+	sleep 2
+
 # Este script funciona en Ubuntu 18.04, bionic y Ubuntu 20.04, así como las derivadas en linux Mint.
 #
 	echo ""	
