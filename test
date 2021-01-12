@@ -29,7 +29,7 @@ DISTRO=$(lsb_release -cs)
 	
 #Instalación paquetes/drivers nwfermi en el sistema host
 #
-	if [[ $DISTRO = focal || ulyana ]]
+	if [[ $DISTRO = focal || $DISTRO = ulyana || $DISTRO = ulyssa ]]
 	then
 		echo ""
 		echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu focal, instalando drivers...${NORMAL}"
@@ -38,7 +38,7 @@ DISTRO=$(lsb_release -cs)
 		echo ""
 	
 	
-	elif [[ $DISTRO = bionic || tricia ]]
+	elif [[ $DISTRO = bionic || $DISTRO = tricia || $DISTRO = tina || $DISTRO = tessa || $DISTRO = tara ]]
 	then
 		echo ""
 		echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu bionic, instalando drivers...${NORMAL}"
