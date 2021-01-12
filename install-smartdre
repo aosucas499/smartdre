@@ -8,6 +8,25 @@ NORMAL="\033[0m"
 AZUL="\033[1;34m"
 DISTRO=$(lsb_release -cs)
 
+# Establecer la distribución en la que se basa el sistema host.
+# 
+	if [[ $DISTRO = focal || $DISTRO = ulyana || $DISTRO = ulyssa ]]
+	then
+        	BASED=focal
+    	elif
+    	[[ $DISTRO = bionic || $DISTRO = tricia || $DISTRO = tina || $DISTRO = tessa || $DISTRO = tara ]]
+    	then
+        	BASED=bionic
+    	else
+        	echo ""
+		echo -e "${ROJO}Esta instalación no es compatible con tu sistema${NORMAL}" 
+		echo ""
+		echo -e "${ROJO}This install process is not compatible with your system${NORMAL}"
+		echo ""
+		sleep 4
+		exit
+    	fi
+    
 # Este script funciona en Ubuntu 18.04, bionic y Ubuntu 20.04, así como las derivadas en linux Mint.
 #
 	echo ""	
@@ -29,7 +48,7 @@ DISTRO=$(lsb_release -cs)
 	
 #Instalación paquetes/drivers nwfermi en el sistema host
 #
-	if [[ $DISTRO = focal || $DISTRO = ulyana || $DISTRO = ulyssa ]]
+	if [[ $BASED = focal ]]
 	then
 		echo ""
 		echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu focal, instalando drivers...${NORMAL}"
@@ -46,7 +65,7 @@ DISTRO=$(lsb_release -cs)
 		cd ..
 		sudo rm -r nwfermi
 	
-	elif [[ $DISTRO = bionic || $DISTRO = tricia || $DISTRO = tina || $DISTRO = tessa || $DISTRO = tara ]]
+	elif [[ $BASED = bionic ]]
 	then
 		echo ""
 		echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu bionic, instalando drivers...${NORMAL}"
@@ -93,7 +112,7 @@ DISTRO=$(lsb_release -cs)
 	sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 	#sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $DISTRO stable"
 	touch docker.list
-	echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $DISTRO stable" > docker.list
+	echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $BASED stable" > docker.list
 	sudo mv docker.list /etc/apt/sources.list.d/docker.list
 	sudo apt-key fingerprint 0EBFCD88
 	sudo apt update
