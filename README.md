@@ -30,6 +30,8 @@ tag 0.3: Ubuntu 12.04 "Precise" 64bits STABLE
 
 ![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/ubuntu_smartdre.png)
 
+![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/mint_smartdre.png)
+
 ## USAGE
 
     sudo apt-get update -y
