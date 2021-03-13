@@ -167,7 +167,11 @@ DISTRO=$(lsb_release -cs)
     	sudo chmod 0440 zz-controlpanel
     	sudo cp zz-controlpanel /etc/sudoers.d/ 
     	sudo cp smartdre-controlpanel.desktop /usr/share/applications/
-    	
+	
+# Añadir iconos originales al sistema
+#
+	sudo cp icons/* /usr/share/icons
+	
 # Notificaciones al terminar
 #
 	echo ""
