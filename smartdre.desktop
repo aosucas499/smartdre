@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Exec=sudo /usr/bin/smartdre
-Icon=/var/lib/app-info/icons/ubuntu-focal-main/64x64/cinnamon-control-center_cs-tablet.png
+Icon=/usr/share/icons/SMART_Board_Software.png
 Terminal=false
 Name[es_ES]=SMARTBOARD_smartdre Drivers
 Comment[es_ES]=Drivers pizarras SMARTBOARD
