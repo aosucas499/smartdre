@@ -12,8 +12,8 @@ container_name=smartboard
 image_name=aosucas499/smartdre:latest
 
 #variable carpeta configuración para compartir con el contenedor
-STORAGE_FOLDER=/home/$USER/SMARTBOARD
-CONFIG_FOLDER=~/home/$USER/SMARTBOARD-config
+#STORAGE_FOLDER=/home/$USER/SMARTBOARD
+#CONFIG_FOLDER=~/home/$USER/SMARTBOARD-config
 
 #rm -r $STORAGE_FOLDER
 #if [ -d "$STORAGE_FOLDER" ]; then
@@ -31,12 +31,15 @@ CONFIG_FOLDER=~/home/$USER/SMARTBOARD-config
 #    mkdir $CONFIG_FOLDER
 #fi
 
-docker stop smartboard 
-docker stop smartboard-0.3 && docker rm smartboard-0.3
-docker stop smartboard-0.4 && docker rm smartboard-0.4
-docker stop smartboard-0.5 && docker rm smartboard-0.5
-docker stop smartboard-0.6 && docker rm smartboard-0.6
-docker stop testing && docker rm testing
+#docker stop smartboard 
+#docker stop smartboard-0.3 && docker rm smartboard-0.3
+#docker stop smartboard-0.4 && docker rm smartboard-0.4
+#docker stop smartboard-0.5 && docker rm smartboard-0.5
+#docker stop smartboard-0.6 && docker rm smartboard-0.6
+#docker stop testing && docker rm testing
+
+docker stop smartboard  smartboard-0.3  smartboard-0.4  smartboard-0.5  smartboard-0.6  testing
+docker rm   smartboard  smartboard-0.3  smartboard-0.4  smartboard-0.5  smartboard-0.6  testing
 
 
 if docker ps -a --format '{{.Names}}' | grep -Eq "^${container_name}\$"; then
