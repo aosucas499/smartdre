@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Exec=sudo /usr/bin/orient
-Icon=/var/lib/app-info/icons/ubuntu-focal-main/64x64/xinput-calibrator_xinput_calibrator.png
+Icon=/usr/share/icons/SMART_Orient.png
 Terminal=false
 Name[es_ES]=SMARTBOARD Orientar
 Comment[es_ES]=Orientar pizarras SMARTBOARD
