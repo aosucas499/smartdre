@@ -8,6 +8,8 @@ An application for <b>linux</b>, to run drivers/software for old digital boards 
 
 + SMART SB480 
 
++ Smart 800
+
 ### Linux compatible systems:
 
 + Ubuntu Focal and Bionic
