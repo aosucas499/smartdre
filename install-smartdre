@@ -70,7 +70,7 @@ DISTRO=$(lsb_release -cs)
 		chmod +x nwfermi-host-focal.sh
 		sudo ./nwfermi-host-focal.sh
 		cd ..
-		sudo rm -r nwfermi
+		#sudo rm -r nwfermi
 	
 	elif [[ $BASED = bionic ]]
 	then
@@ -87,7 +87,7 @@ DISTRO=$(lsb_release -cs)
 		chmod +x nwfermi-host-bionic.sh
 		sudo ./nwfermi-host-bionic.sh
 		cd ..
-		sudo rm -r nwfermi
+		#sudo rm -r nwfermi
 	
 	else
 		echo ""
