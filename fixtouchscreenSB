@@ -1,9 +1,0 @@
-#Modo: entrando al docker
-
-sudo docker exec -it smartboard /bin/bash
-sed -i -e 's/MultiPointerMode=0/MultiPointerMode=1/g' /etc/xdg/SMART\ Technologies\ Drivers.conf
-sed -i -e 's/MultiPointerMode=1/MultiPointerMode=0/g' /etc/xdg/SMART\ Technologies\ Drivers.conf
-sed -i -e 's/MultiPointerMode=0/MultiPointerMode=1/g' /etc/xdg/SMART\ Technologies\ Drivers.conf
-
-#modo: sin entrar al docker, desde el host, aún no funciona
-sudo docker exec -it smartboard bash sed -i -e 's/MultiPointerMode=1/MultiPointerMode=0/g' /etc/xdg/SMART\ Technologies\ Drivers.conf
