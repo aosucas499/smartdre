@@ -84,8 +84,8 @@ DISTRO=$(lsb_release -cs)
 		sudo apt-get install dkms -y
 		git clone https://github.com/aosucas499/nwfermi
 		cd nwfermi
-		chmod +x nwfermi-bionic.sh
-		sudo ./nwfermi-bionic.sh
+		chmod +x nwfermi-host-bionic.sh
+		sudo ./nwfermi-host-bionic.sh
 		cd ..
 		sudo rm -r nwfermi
 	
