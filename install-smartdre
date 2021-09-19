@@ -8,6 +8,14 @@ NORMAL="\033[0m"
 AZUL="\033[1;34m"
 DISTRO=$(lsb_release -cs)
 
+# Copia el script en el sistema que comprueba que existe la extensión gnome appindicator 
+# En caso contrario la descarga y la instala en el usuario local
+# Por lo tanto tiene que ser llamada con el archivo smartdre.desktop que se ejecuta en cada inicio 
+
+	sudo cp check-appindicator-gnome-extension /usr/bin
+    	sudo chmod +x /usr/bin/check-appindicator-gnome-extension 
+	sudo cp check-appindicator-gnome-extension.desktop /etc/xdg/autostart/
+	
 # Establecer la distribución en la que se basa el sistema host.
 # 
 	if [[ $DISTRO = focal || $DISTRO = ulyana || $DISTRO = ulyssa ]]
@@ -181,5 +189,5 @@ DISTRO=$(lsb_release -cs)
 	
 # Borrar los repositorios de git y archivos de instalación
 #
-	cd ~
+	cd ..
 	sudo rm -r smartdre

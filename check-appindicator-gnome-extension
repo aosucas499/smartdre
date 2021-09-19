@@ -1,0 +1,40 @@
+#! /bin/bash
+
+clear
+
+# Función que comprueba si la extensión gnome-shell-extension-appindicator está instalada para
+# que se muestre el icono de smartdriver en la esquina del sistema educaAndOS plus
+
+function installAppindicator {
+   
+            if [ -d "/home/$USER/.local/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com" ]; then
+            #if [ -d "/usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com" ]; then
+                     #notify-send "Appindicatorsupport está instalada"
+                     exit
+            else 
+                     wget https://github.com/aosucas499/smartdre/raw/eos/icons/appindicatorsupportrgcjonas.gmail.com.v40.shell-extension.zip -O /tmp/appindicatorsupportrgcjonas.gmail.com.v40.shell-extension.zip         
+                     #sudo unzip /tmp/appindicatorsupportrgcjonas.gmail.com.v40.shell-extension.zip -d /usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com
+                     unzip /tmp/appindicatorsupportrgcjonas.gmail.com.v40.shell-extension.zip -d /home/$USER/.local/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com
+                     #gnome-extensions install appindicatorsupportrgcjonas.gmail.com.v40.shell-extension.zip
+                     #sudo gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
+                     gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
+                     notify-send "Appindicatorsupport instalada y activada"
+                     sleep 3
+                     killall -HUP gnome-shell
+   fi
+   }
+   
+# Comprueba que existe la carpeta "extensions", la crea en caso negativo y ejecuta la función anterior.
+
+if [ -d "/home/$USER/.local/share/gnome-shell/extensions" ]; then
+#if [ -d "/usr/share/gnome-shell/extensions/" ]; then
+            installAppindicator
+   else
+   	    #sudo mkdir /usr/share/gnome-shell/extensions/
+            mkdir /home/$USER/.local/share/gnome-shell/extensions
+            installAppindicator         
+   fi
+   
+  
+
+

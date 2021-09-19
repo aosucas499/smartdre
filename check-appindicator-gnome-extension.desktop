@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/check-appindicator-gnome-extension
+Icon=
+Terminal=false
+Name[es_ES]=check-appindicator-gnome-extension
+Comment[es_ES]=script comprueba instalación appindicator extension
+Categories=Education;System;Settings;
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=1
+NoDisplay=true
+Hidden=false
