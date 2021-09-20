@@ -18,7 +18,7 @@ DISTRO=$(lsb_release -cs)
 	
 # Establecer la distribución en la que se basa el sistema host.
 # 
-	if [[ $DISTRO = focal || $DISTRO = ulyana || $DISTRO = ulyssa ]]
+	if [[ $DISTRO = focal || $DISTRO = ulyana || $DISTRO = ulyssa || $DISTRO = uma ]]
 	then
         	BASED=focal
     	elif
