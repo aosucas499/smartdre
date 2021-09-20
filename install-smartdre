@@ -20,8 +20,6 @@ if [[ $DESKTOP = ubuntu:GNOME || $DESKTOP = ubuntu || $DESKTOP = GNOME || $DESKT
 		echo ""
         	echo -e "${ROJO}Desktop based on GNOME${NORMAL}"
 		echo ""
-		echo -e "${AZUL}Desktop environment $XDG_CURRENT_DESKTOP${NORMAL}"
-		echo ""
 		echo -e "${ROJO}Instalando extensión de GNOME appindicatorsupportrgcjonas${NORMAL}"
 		echo ""
         	echo -e "${ROJO}Installing appindicatorsupportrgcjonas GNOME EXTENSION${NORMAL}"
@@ -37,6 +35,8 @@ if [[ $DESKTOP = ubuntu:GNOME || $DESKTOP = ubuntu || $DESKTOP = GNOME || $DESKT
 		echo ""
         	echo -e "${ROJO}Desktop not-based on GNOME${NORMAL}"
 		echo ""
+		echo ""
+		echo -e "${AZUL}Desktop environment $XDG_CURRENT_DESKTOP${NORMAL}"
 		sleep 4
     	fi
 
