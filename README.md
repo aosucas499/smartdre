@@ -35,7 +35,7 @@ An application for <b>linux</b>, to run drivers/software for old digital boards 
 Si este proyecto te ayuda, puedes invitarme a un café.
 
 
-If this project help you,  you can give me a cup of coffee .
+If this project helps you, you can give me a cup of coffee .
 
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate?business=FUMT27MVTRTHJ&no_recurring=0&item_name=Proyectos+TIC+Andaluc%C3%ADa&currency_code=EUR)
