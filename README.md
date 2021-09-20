@@ -45,8 +45,6 @@ tag 0.3: Ubuntu 12.04 "Precise" 64bits STABLE
     git clone https://github.com/aosucas499/smartdre.git
 
     cd smartdre
-    
-    chmod +x install-smartdre
 
     ./install-smartdre
     
