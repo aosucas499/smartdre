@@ -1,5 +1,7 @@
 # smartdre - SMARTBOARD drivers
 
+![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/ubuntu_smartdre.png)
+
 An application for <b>linux</b>, to run drivers/software for old digital boards <b>"SmartBoard"</b> in new <b>Ubuntu</b> based distros. (Bionic and focal based systems). It downloads a <b>docker image</b>, installs dependencies and executes the drivers/software. The aplication run at every startup.
 
 ### Working in Boards:
@@ -39,7 +41,6 @@ If this project help you,  you can give me a cup of coffee .
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate?business=FUMT27MVTRTHJ&no_recurring=0&item_name=Proyectos+TIC+Andaluc%C3%ADa&currency_code=EUR)
 
 
-![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/ubuntu_smartdre.png)
 
 ![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/mint_smartdre.png)
 
