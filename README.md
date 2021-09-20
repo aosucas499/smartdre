@@ -51,3 +51,5 @@ If this project helps you, you can give me a cup of coffee .
 
 <b>Gracias</b> al equipo de Lliurex Team, basé mi dockerfile en el suyo y usé sus archivos.
 
+
+[Más info del proyecto](https://github.com/aosucas499/smartdre/wiki)
