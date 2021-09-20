@@ -60,14 +60,14 @@ tag 0.3: Ubuntu 12.04 "Precise" 64bits STABLE
 4. File to boot at init session (it copies the file smartdre.desktop to /etc/xdg/autostart)
 
 ### smartdre.desktop
-File necessary to boot the container when the session starts. Compatible with KDE and GNOME.
+File necessary to boot the container when the session starts. Compatible with KDE, Cinnamon and GNOME.
 
 ### smartdre
 It runs the the docker container, taking into account if the container was created or not.
 
 ### controlpanel
-It runs the controlpanel smartboard, it is necessary for systems without systemtrayicon (Gnome 3.2x)
+It runs the controlpanel smartboard.
 
 ### orient
-It runs the application to orient the board, it is necessary for systems without systemtrayicon (Gnome 3.2x)
+It runs the application to orient the board.
 
