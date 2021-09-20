@@ -15,26 +15,13 @@ An application for <b>linux</b>, to run drivers/software for old digital boards 
 + Ubuntu Focal and Bionic
 + Linux Mint based on Ubuntu Focal and Bionic 
 
-### Docker image based on:
-
-tag:latest: Stable version with some models
-
-tag 0.6: Guadalinex Edu 2013 (Ubuntu Trusty because there aren't "precise" 32 bits images) STABLE
-
-tag 0.4: Guadalinex Next(Ubuntu Xenial) UNSTABLE
-
-tag 0.3: Ubuntu 12.04 "Precise" 64bits STABLE
+Si este proyecto te ayuda, puedes invitarme a un café.
 
 
-<b>Gracias</b> al equipo de Lliurex Team, basé mi dockerfile en el suyo y usé sus archivos.
+If this project help you,  you can give me a cup of coffee .
 
-<b>Thanks to</b> [Lliurex Team](https://portal.edu.gva.es/lliurex/va/) and [mijuanlo](https://github.com/mijuanlo)
 
-![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/ubuntu_smartdre.png)
-
-![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/mint_smartdre.png)
-
-![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/mint_smartdre-icons.png)
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate?business=FUMT27MVTRTHJ&no_recurring=0&item_name=Proyectos+TIC+Andaluc%C3%ADa&currency_code=EUR)
 
 ## USAGE
 
