@@ -37,24 +37,11 @@ If this project help you,  you can give me a cup of coffee .
     
     sudo reboot (Reboot the system - Reiniciar el sistema)
 
-## FILES description
+![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/ubuntu_smartdre.png)
 
-### install-smartdre: Run first. It installs: 
-1. Docker. 
-2. Driver dependencies needed for the digital board in the host system. ("nwferi-daemon", "nwfermi-module" and "xf86-input-nextwindow").
-   Thanks to Geert Lorang (https://github.com/glorang), Daniel Newton (https://launchpad.net/~djpnewton) and [mijuanlo](https://github.com/mijuanlo)
-3. Docker image [aosucas499/smartdre](https://hub.docker.com/r/aosucas499/smartdre)
-4. File to boot at init session (it copies the file smartdre.desktop to /etc/xdg/autostart)
+![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/mint_smartdre.png)
 
-### smartdre.desktop
-File necessary to boot the container when the session starts. Compatible with KDE, Cinnamon and GNOME.
+![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/mint_smartdre-icons.png)
 
-### smartdre
-It runs the the docker container, taking into account if the container was created or not.
 
-### controlpanel
-It runs the controlpanel smartboard.
-
-### orient
-It runs the application to orient the board.
 
