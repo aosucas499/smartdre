@@ -44,4 +44,7 @@ If this project help you,  you can give me a cup of coffee .
 ![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/mint_smartdre-icons.png)
 
 
+<b>Thanks to</b> [Lliurex Team](https://portal.edu.gva.es/lliurex/va/) and [mijuanlo](https://github.com/mijuanlo)
+
+<b>Gracias</b> al equipo de Lliurex Team, basé mi dockerfile en el suyo y usé sus archivos.
 
