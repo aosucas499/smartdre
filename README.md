@@ -15,13 +15,6 @@ An application for <b>linux</b>, to run drivers/software for old digital boards 
 + Ubuntu Focal and Bionic
 + Linux Mint based on Ubuntu Focal and Bionic 
 
-Si este proyecto te ayuda, puedes invitarme a un café.
-
-
-If this project help you,  you can give me a cup of coffee .
-
-
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate?business=FUMT27MVTRTHJ&no_recurring=0&item_name=Proyectos+TIC+Andaluc%C3%ADa&currency_code=EUR)
 
 ## USAGE
 
@@ -36,6 +29,15 @@ If this project help you,  you can give me a cup of coffee .
     ./install-smartdre
     
     sudo reboot (Reboot the system - Reiniciar el sistema)
+
+Si este proyecto te ayuda, puedes invitarme a un café.
+
+
+If this project help you,  you can give me a cup of coffee .
+
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate?business=FUMT27MVTRTHJ&no_recurring=0&item_name=Proyectos+TIC+Andaluc%C3%ADa&currency_code=EUR)
+
 
 ![](https://github.com/aosucas499/guadalinex/blob/main/im%C3%A1genes/ubuntu_smartdre.png)
 
