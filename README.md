@@ -18,7 +18,7 @@ An application for <b>linux</b>, to run drivers/software for old digital boards 
 + Linux Mint based on Ubuntu Focal and Bionic 
 
 
-## USAGE
+## INSTALL
 
     sudo apt-get update -y
     
