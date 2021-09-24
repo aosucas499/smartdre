@@ -11,7 +11,6 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 
 # Copia el script en el sistema que comprueba que existe la extensión gnome appindicator 
 # En caso contrario la descarga y la instala en el usuario local
-# Por lo tanto tiene que ser llamada con el archivo smartdre.desktop que se ejecuta en cada inicio 
 
 if [[ $DESKTOP = ubuntu:GNOME || $DESKTOP = ubuntu || $DESKTOP = GNOME || $DESKTOP = UBUNTU || $DESKTOP = gnome ]]
 	then
