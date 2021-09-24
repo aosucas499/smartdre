@@ -3,7 +3,7 @@
 clear
 
 # Función que comprueba si la extensión gnome-shell-extension-appindicator está instalada para
-# que se muestre el icono de smartdriver en la esquina del sistema educaAndOS plus
+# que se muestre el icono de smartdriver en la esquina del sistema ubuntu con escritorio GNOME
 
 function installAppindicator {
    
