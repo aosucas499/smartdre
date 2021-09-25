@@ -39,7 +39,7 @@ image_name=aosucas499/smartdre:latest
 #docker stop testing && docker rm testing
 
 docker stop smartboard  smartboard-0.3  smartboard-0.4  smartboard-0.5  smartboard-0.6  testing
-docker rm   smartboard  smartboard-0.3  smartboard-0.4  smartboard-0.5  smartboard-0.6  testing
+docker rm smartboard-0.3  smartboard-0.4  smartboard-0.5  smartboard-0.6  testing
 
 
 if docker ps -a --format '{{.Names}}' | grep -Eq "^${container_name}\$"; then
