@@ -12,6 +12,7 @@ function installAppindicator {
                      #notify-send "Appindicatorsupport está instalada"
                      exit
             else 
+                     rm -r /tmp/appindicatorsupportrgcjonas.gmail.com.v40.shell-extension.zip
                      wget https://github.com/aosucas499/smartdre/raw/master/icons/appindicatorsupportrgcjonas.gmail.com.v40.shell-extension.zip -O /tmp/appindicatorsupportrgcjonas.gmail.com.v40.shell-extension.zip         
                      #sudo unzip /tmp/appindicatorsupportrgcjonas.gmail.com.v40.shell-extension.zip -d /usr/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com
                      unzip /tmp/appindicatorsupportrgcjonas.gmail.com.v40.shell-extension.zip -d /home/$USER/.local/share/gnome-shell/extensions/appindicatorsupport@rgcjonas.gmail.com
