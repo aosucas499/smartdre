@@ -14,6 +14,10 @@ sudo rm /etc/xdg/autostart/smartdre.desktop
 
 sudo rm /usr/share/applications/smartdre.desktop
 
+sudo rm /usr/share/applications/smartdre-controlpanel.desktop
+
+sudo rm /usr/share/applications/smartdre-orient.desktop
+
 sudo rm /usr/bin/smartdre
 
 sudo rm /etc/sudoers.d/zz-smartdre
