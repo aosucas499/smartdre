@@ -1,0 +1,233 @@
+#! /bin/bash
+
+clear
+# Variables 
+#
+ROJO="\033[1;31m"
+NORMAL="\033[0m"
+AZUL="\033[1;34m"
+DISTRO=$(lsb_release -cs)
+DESKTOP=$XDG_CURRENT_DESKTOP
+
+# Copia el script en el sistema que comprueba que existe la extensión gnome appindicator 
+# En caso contrario la descarga y la instala en el usuario local
+
+if [[ $DESKTOP = ubuntu:GNOME || $DESKTOP = ubuntu || $DESKTOP = GNOME || $DESKTOP = UBUNTU || $DESKTOP = gnome ]]
+	then
+		echo ""
+        	echo -e "${ROJO}Escritorio basado en GNOME${NORMAL}"
+		echo ""
+        	echo -e "${ROJO}Desktop based on GNOME${NORMAL}"
+		echo ""
+		echo -e "${ROJO}Instalando extensión de GNOME appindicatorsupportrgcjonas${NORMAL}"
+		echo ""
+        	echo -e "${ROJO}Installing appindicatorsupportrgcjonas GNOME EXTENSION${NORMAL}"
+		echo ""
+		sleep 3
+		sudo cp check-appindicator-gnome-extension /usr/bin
+    		sudo chmod +x /usr/bin/check-appindicator-gnome-extension 
+		sudo cp check-appindicator-gnome-extension.desktop /etc/xdg/autostart/
+    	
+    	else
+        	echo ""
+        	echo -e "${ROJO}Escritorio no basado en GNOME${NORMAL}"
+		echo ""
+        	echo -e "${ROJO}Desktop not-based on GNOME${NORMAL}"
+		echo ""
+		echo ""
+		echo -e "${AZUL}Desktop environment $XDG_CURRENT_DESKTOP${NORMAL}"
+		sleep 4
+    	fi
+
+# Establecer la distribución en la que se basa el sistema host.
+# 
+	if [[ $DISTRO = focal || $DISTRO = ulyana || $DISTRO = ulyssa || $DISTRO = uma ]]
+	then
+        	BASED=focal
+    	elif
+    	[[ $DISTRO = bionic || $DISTRO = tricia || $DISTRO = tina || $DISTRO = tessa || $DISTRO = tara ]]
+    	then
+        	BASED=bionic
+    	else
+        	echo ""
+		echo -e "${ROJO}Esta instalación no es compatible con tu sistema${NORMAL}" 
+		echo ""
+		echo -e "${ROJO}This install process is not compatible with your system${NORMAL}"
+		echo ""
+		sleep 4
+		exit
+    	fi
+
+	echo ""
+	echo System codename $DISTRO
+    	echo ""
+	echo System based on Ubuntu $BASED
+	echo ""
+	sleep 2
+
+# Este script funciona en Ubuntu 18.04, bionic y Ubuntu 20.04, así como las derivadas en linux Mint.
+#
+	echo ""	
+	echo -e "${ROJO}Solicitando contraseña del usuario con derechos de administrador${NORMAL}"
+	echo ""
+	echo -e "${ROJO}Asking password of the user with administrations rights${NORMAL}"
+	echo ""
+	sudo echo ""
+	
+# Borrando antiguos archivos de smartdre o lliurex-smart
+#
+	echo ""	
+	echo -e "${ROJO}Borrando si existen archivos de anteriores instalaciones${NORMAL}"
+	echo ""
+	echo -e "${ROJO} Deleting if there are files from previous installations${NORMAL}"
+	echo ""
+	sudo chmod +x uninstall-smartdre
+	sudo ./uninstall-smartdre
+	
+#Instalación paquetes/drivers nwfermi en el sistema host
+#
+	if [[ $BASED = focal ]]
+	then
+		echo ""
+		echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu focal, instalando drivers...${NORMAL}"
+		echo ""
+		echo -e "${AZUL}Your system is based on Ubuntu Focal, installing drivers...${NORMAL}"
+		echo ""
+		sleep 4
+		sudo apt-get install git -y
+		sudo apt-get install dkms -y
+		git clone https://github.com/aosucas499/nwfermi
+		cd nwfermi
+		chmod +x nwfermi-focal.sh
+		sudo ./nwfermi-focal.sh
+		cd ..
+		sudo rm -r nwfermi
+	
+	elif [[ $BASED = bionic ]]
+	then
+		echo ""
+		echo -e "${AZUL}Tu sistema Linux está basado en Ubuntu bionic, instalando drivers...${NORMAL}"
+		echo ""
+		echo -e "${AZUL}Your system is based on Ubuntu Bionic, installing drivers...${NORMAL}"
+		echo ""
+		sleep 4
+		sudo apt-get install git -y
+		sudo apt-get install dkms -y
+		git clone https://github.com/aosucas499/nwfermi
+		cd nwfermi
+		chmod +x nwfermi-host-bionic.sh
+		sudo ./nwfermi-host-bionic.sh
+		cd ..
+		sudo rm -r nwfermi
+	
+	else
+		echo ""
+		echo -e "${ROJO}Esta instalación no es compatible con tu sistema${NORMAL}" 
+		echo ""
+		echo -e "${ROJO}This install process is not compatible with your system${NORMAL}"
+		echo ""
+		sleep 4
+		exit
+	fi
+
+	echo ""
+	echo -e "${AZUL}continúa el script...${NORMAL}"
+	echo ""
+	echo -e "${AZUL}the script continues...${NORMAL}"
+	echo ""
+	
+# Instalar docker por repositorio
+#
+#	echo ""
+#	echo -e "${AZUL}Instalando Docker...${NORMAL}"
+#	echo ""
+#	echo -e "${AZUL}Instaling Docker...${NORMAL}"
+#	echo ""
+#	sudo apt update
+#	sudo apt install -f
+#	sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
+#	sudo apt install -f
+#	sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	#sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $DISTRO stable"
+#	touch docker.list
+#	echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $BASED stable" > docker.list
+#	sudo mv docker.list /etc/apt/sources.list.d/docker.list
+#	sudo apt-key fingerprint 0EBFCD88
+#	sudo apt update
+#	sudo apt install docker-ce docker-ce-cli containerd.io -y 
+	#sudo usermod -aG docker $USER
+#	sudo rm /etc/apt/sources.list.d/docker.list
+	
+# Instalar docker por paquetes
+#
+	echo ""
+	echo -e "${AZUL}Instalando Docker...${NORMAL}"
+	echo ""
+	echo -e "${AZUL}Instaling Docker...${NORMAL}"
+	echo ""
+	sudo apt update
+	sudo apt install -f
+	sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
+	wget https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/containerd.io_1.5.11-1_amd64.deb
+	wget https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce-cli_20.10.17~3-0~ubuntu-focal_amd64.deb
+	wget https://download.docker.com/linux/ubuntu/dists/focal/pool/stable/amd64/docker-ce_20.10.17~3-0~ubuntu-focal_amd64.deb
+	sudo dpkg -i *.deb
+	sudo apt install -f
+	sudo rm *.deb
+	
+# Descarga la imagen docker
+#
+	echo ""
+	echo -e "${AZUL}Descargando la imagen docker que contiene los drivers de la pizarra...${NORMAL}"
+	echo ""
+	echo -e "${AZUL}Downloading the docker image with the board drivers...${NORMAL}"
+	echo ""
+	sudo docker pull aosucas499/smartdre
+
+# Hacer la aplicación iniciable en cada reinicio y usable para cualquier usuario sin "sudo"
+#
+	echo ""
+	echo -e "${AZUL}Configurando la app para que arranque en cada inicio de sesión...${NORMAL}"
+	echo ""
+	echo -e "${AZUL}Settings up the app to boot at init...${NORMAL}"
+	echo ""
+	sudo cp smartdre /usr/bin
+    	sudo chmod +x /usr/bin/smartdre
+    	sudo chown root:root zz-smartdre
+    	sudo chmod 0440 zz-smartdre
+    	sudo cp zz-smartdre /etc/sudoers.d/ 
+    	sudo cp smartdre.desktop /etc/xdg/autostart/
+    	sudo cp smartdre.desktop /usr/share/applications/
+    	
+# Crear apps y links para orientar y el panel de control de la pizarra en sistemas sin el icono en la barra de tareas
+# Por ejemplo Ubuntu Focal y EducaAndOS
+#	
+	sudo cp orient /usr/bin
+    	sudo chmod +x /usr/bin/orient
+    	sudo chown root:root zz-orient
+    	sudo chmod 0440 zz-orient
+    	sudo cp zz-orient /etc/sudoers.d/ 
+    	sudo cp smartdre-orient.desktop /usr/share/applications/
+    	
+    	sudo cp controlpanel /usr/bin
+    	sudo chmod +x /usr/bin/controlpanel
+    	sudo chown root:root zz-controlpanel
+    	sudo chmod 0440 zz-controlpanel
+    	sudo cp zz-controlpanel /etc/sudoers.d/ 
+    	sudo cp smartdre-controlpanel.desktop /usr/share/applications/
+	
+# Añadir iconos originales al sistema
+#
+	sudo cp icons/* /usr/share/icons
+	
+# Notificaciones al terminar
+#
+	echo ""
+	echo -e "${ROJO}Reinicie el equipo para que se ejecute la aplicación${NORMAL}"
+	echo ""
+	sudo notify-send "Reinicie el equipo para que se ejecute la aplicación"
+	
+# Borrar los repositorios de git y archivos de instalación
+#
+	cd ..
+	sudo rm -r smartdre
