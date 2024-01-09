@@ -41,7 +41,7 @@ if [[ $DESKTOP = ubuntu:GNOME || $DESKTOP = ubuntu || $DESKTOP = GNOME || $DESKT
 
 # Establecer la distribución en la que se basa el sistema host.
 # 
-	if [[ $DISTRO = focal || $DISTRO = ulyana || $DISTRO = ulyssa || $DISTRO = uma ]]
+	if [[ $DISTRO = focal || $DISTRO = ulyana || $DISTRO = ulyssa || $DISTRO = uma || $DISTRO = una ]]
 	then
         	BASED=focal
     	elif
