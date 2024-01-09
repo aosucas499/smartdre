@@ -134,6 +134,7 @@ if [[ $DESKTOP = ubuntu:GNOME || $DESKTOP = ubuntu || $DESKTOP = GNOME || $DESKT
 		echo -e "${AZUL}Your system is based on Ubuntu Jammy, installing drivers...${NORMAL}"
 		echo ""
 		sleep 4
+		sudo apt update -y
 		sudo apt-get install git -y
 		sudo apt-get install dkms build-essential autoconf xutils-dev libtool xserver-xorg-dev libc6-i386 pkg-config evtest -y
 		sudo cp custom.conf /etc/gdm3/
@@ -153,11 +154,14 @@ if [[ $DESKTOP = ubuntu:GNOME || $DESKTOP = ubuntu || $DESKTOP = GNOME || $DESKT
 		sudo make
 		sudo make install
 		sudo cp /usr/local/lib/xorg/modules/input/nextwindow_drv.* /usr/lib/xorg/modules/input/
-		sudo usermod -a -G input gdm
+		sudo groupadd input
+		sudo useradd gdm -g gdm
+		#sudo passwd gdm
 		sudo usermod -a -G input $USER
 		sudo usermod -a -G input usuario
-		cd ..
-		sudo rm -r nwfermi
+		sudo usermod -a -G input gdm
+		cd ../../../..
+		sudo rm -r nwfermi*
 		# Notificaciones al terminar
 		#
 		echo ""
