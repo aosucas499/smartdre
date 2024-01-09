@@ -157,9 +157,10 @@ if [[ $DESKTOP = ubuntu:GNOME || $DESKTOP = ubuntu || $DESKTOP = GNOME || $DESKT
 		sudo groupadd input
 		sudo useradd gdm 
 		#sudo passwd gdm
+		sudo usermod -a -G gdm gdm
+		sudo usermod -a -G input gdm
 		sudo usermod -a -G input $USER
 		sudo usermod -a -G input usuario
-		sudo usermod -a -G input gdm
 		cd ../../../..
 		sudo rm -r nwfermi*
 		# Notificaciones al terminar
