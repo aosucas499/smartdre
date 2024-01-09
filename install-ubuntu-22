@@ -155,7 +155,7 @@ if [[ $DESKTOP = ubuntu:GNOME || $DESKTOP = ubuntu || $DESKTOP = GNOME || $DESKT
 		sudo make install
 		sudo cp /usr/local/lib/xorg/modules/input/nextwindow_drv.* /usr/lib/xorg/modules/input/
 		sudo groupadd input
-		sudo useradd gdm -g gdm
+		sudo useradd gdm 
 		#sudo passwd gdm
 		sudo usermod -a -G input $USER
 		sudo usermod -a -G input usuario
