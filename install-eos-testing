@@ -1,0 +1,95 @@
+#! /bin/bash
+
+clear
+# Variables 
+#
+ROJO="\033[1;31m"
+NORMAL="\033[0m"
+AZUL="\033[1;34m"
+DISTRO=$(lsb_release -cs)
+DESKTOP=$XDG_CURRENT_DESKTOP
+	
+# Borrando antiguos archivos de smartdre o lliurex-smart
+#
+	echo ""	
+	echo -e "${ROJO}Borrando si existen archivos de anteriores instalaciones${NORMAL}"
+	echo ""
+	echo -e "${ROJO} Deleting if there are files from previous installations${NORMAL}"
+	echo ""
+	sudo chmod +x uninstall-smartdre
+	sudo ./uninstall-smartdre
+
+
+# Comprueba está instalado smartboard del cga
+#
+	sudo apt update -y
+		if dpkg-query --list | grep smartboard-meta; then
+        		echo "Smartboard eos instalado"
+			
+		else
+			echo "Smartboard EOS no instalado"
+			notify-send "Smartboard EOS no instalado"
+			zenity --error \
+       			--title="Smartboard EOS no instalado" \
+      			--width=500 \
+      			--text="Instale la aplicación <b>Pizarra Smartboard</b> desde el centro de software EducaAndOS y vuelva a ejecutar esta instalación"
+			screen -d -m gnome-software --details-pkg=smartboard-meta
+		        exit
+		fi
+	
+#Instalación paquetes/drivers nwfermi en el sistema host
+#
+		sleep 4
+		sudo apt update -y
+		sudo apt-get install git -y
+		sudo apt-get install dkms build-essential autoconf xutils-dev libtool xserver-xorg-dev libc6-i386 pkg-config evtest -y
+		sudo cp custom.conf /etc/gdm3/
+		git clone https://github.com/aosucas499/nwfermi-ubuntu22.04
+		cd nwfermi*
+		sudo dkms unbuild nwfermi/0.6.5.0 --all
+		sudo cp -p -r usr/src/nwfermi-0.7.0.1 /usr/src
+		sudo dkms build nwfermi/0.7.0.1
+		sudo dkms install nwfermi/0.7.0.1
+		sudo cp etc/X11/xorg.conf.d/10-nwfermi.conf /etc/X11/xorg.conf.d/
+		sudo cp usr/sbin/nwfermi_daemon /usr/sbin
+		sudo cp etc/udev/rules.d/40-nw-fermi.rules /etc/udev/rules.d/
+		sudo cp etc/systemd/system/nwfermi@.service /etc/systemd/system/
+		sudo systemctl daemon-reload
+		cd usr/src/xf86-input-nextwindow-0.3.4
+		chmod +x autogen.sh ; ./autogen.sh
+		sudo make
+		sudo make install
+		sudo cp /usr/local/lib/xorg/modules/input/nextwindow_drv.* /usr/lib/xorg/modules/input/
+		sudo groupadd input
+		sudo useradd gdm 
+		#sudo passwd gdm
+		sudo usermod -a -G gdm gdm
+		sudo usermod -a -G input gdm
+		sudo usermod -a -G input $USER
+		sudo usermod -a -G input usuario
+		cd ../../../..
+		sudo rm -r nwfermi*
+		# Notificaciones al terminar
+		#
+		echo ""
+		echo -e "${ROJO}Reinicie el equipo para que se ejecute la aplicación${NORMAL}"
+		echo ""
+		sudo notify-send "Reinicie el equipo para que se ejecute la aplicación"
+		# Borrar los repositorios de git y archivos de instalación
+		#
+		cd ..
+		sudo rm -r smartdre
+		sleep 3
+		exit
+	
+# Notificaciones al terminar
+#
+	echo ""
+	echo -e "${ROJO}Reinicie el equipo para que se ejecute la aplicación${NORMAL}"
+	echo ""
+	sudo notify-send "Reinicie el equipo para que se ejecute la aplicación"
+	
+# Borrar los repositorios de git y archivos de instalación
+#
+	cd ..
+	sudo rm -r smartdre
