@@ -65,7 +65,9 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 		sudo cp -p -r usr/src/nwfermi-0.7.0.1 /usr/src
 		sudo dkms build nwfermi/0.7.0.1
 		sudo dkms install nwfermi/0.7.0.1
+		sudo mkdir -p /etc/X11/xorg.conf.d
 		sudo cp etc/X11/xorg.conf.d/10-nwfermi.conf /etc/X11/xorg.conf.d/
+		sudo cp etc/X11/xorg.conf.d/10-nwfermi.conf /usr/share/X11/xorg.conf.d/
 		sudo cp usr/sbin/nwfermi_daemon /usr/sbin
 		sudo cp etc/udev/rules.d/40-nw-fermi.rules /etc/udev/rules.d/
 		sudo cp etc/systemd/system/nwfermi@.service /etc/systemd/system/
