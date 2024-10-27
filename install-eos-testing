@@ -32,11 +32,23 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 			zenity --error \
        			--title="Smartboard EOS no instalado" \
       			--width=500 \
-      			--text="Instale la aplicación <b>Pizarra Smartboard</b> desde el centro de software EducaAndOS y vuelva a ejecutar esta instalación"
-			screen -d -m gnome-software --details-pkg=smartboard-meta
-		        exit
+      			#--text="Instale la aplicación <b>Pizarra Smartboard</b> desde el centro de software EducaAndOS y vuelva a ejecutar esta instalación"
+			#screen -d -m gnome-software --details-pkg=smartboard-meta
+		        --text="Instalando respositorios dede <b>SmartBoard</b> e instalando Drivers"
+			wget https://downloads.smarttech.com/software/linux/nb-for-ubuntu-20/dists/swbuild.asc
+			gpg --show-keys --fingerprint swbuild.asc
+			sudo apt-key add swbuild.asc
+			touch smartboard.list
+			echo "deb http://downloads01.smarttech.com/software/linux/nb-for-ubuntu-20 stable non-free" > smartboard.list
+			sudo mv smartboard.list /etc/apt/sources.list.d/smartboard.list
+			sudo apt-get update -y
+			sudo apt-get install smart-product-drivers smart-notebook
+			sudo apt install -f -y
+			sudo rm /etc/apt/sources.list.d/smartboard.list
+			sudo rm swbuild.asc
+			exit
 		fi
-	
+
 #Instalación paquetes/drivers nwfermi en el sistema host
 #
 		sleep 4
@@ -88,6 +100,10 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 	echo -e "${ROJO}Reinicie el equipo para que se ejecute la aplicación${NORMAL}"
 	echo ""
 	sudo notify-send "Reinicie el equipo para que se ejecute la aplicación"
+	echo ""
+	echo -e "${ROJO}No funcionará el táctil si el PC y proyector tienen resolución diferente${NORMAL}"
+	echo ""
+	sudo notify-send "No funcionará el táctil si el PC y proyector tienen resolución diferente"
 	
 # Borrar los repositorios de git y archivos de instalación
 #
