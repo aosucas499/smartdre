@@ -72,14 +72,17 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 		sudo cp etc/udev/rules.d/40-nw-fermi.rules /etc/udev/rules.d/
 		sudo cp etc/systemd/system/nwfermi@.service /etc/systemd/system/
 		sudo systemctl daemon-reload
-		sudo apt install xutils-dev -y
-		export XORG_CFLAGS="-I/usr/include/xorg -I/usr/include/X11"
-		export XORG_LIBS="-L/usr/lib/xorg -L/usr/lib/X11"
-		cd usr/src/xf86-input-nextwindow-0.3.4
-		chmod +x autogen.sh ; ./autogen.sh
-		sudo make
-		sudo make install
-		sudo cp /usr/local/lib/xorg/modules/input/nextwindow_drv.* /usr/lib/xorg/modules/input/
+		#sudo apt install xutils-dev -y
+		#export XORG_CFLAGS="-I/usr/include/xorg -I/usr/include/X11"
+		#export XORG_LIBS="-L/usr/lib/xorg -L/usr/lib/X11"
+		#cd usr/src/xf86-input-nextwindow-0.3.4
+		#chmod +x autogen.sh ; ./autogen.sh
+		#sudo make
+		#sudo make install
+		#sudo cp /usr/local/lib/xorg/modules/input/nextwindow_drv.* /usr/lib/xorg/modules/input/
+		wget https://github.com/aosucas499/nwfermi/raw/refs/heads/main/focal/xf86-input-nextwindow_0.3.4~lliurex1+focal2_amd64.deb
+		sudo dpkg -i xf86-input-nextwindow_0.3.4~lliurex1+focal2_amd64.deb
+		sudo rm xf86-input-nextwindow_0.3.4~lliurex1+focal2_amd64.deb
 		sudo groupadd input
 		sudo useradd gdm 
 		#sudo passwd gdm
