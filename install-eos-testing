@@ -72,6 +72,9 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 		sudo cp etc/udev/rules.d/40-nw-fermi.rules /etc/udev/rules.d/
 		sudo cp etc/systemd/system/nwfermi@.service /etc/systemd/system/
 		sudo systemctl daemon-reload
+		sudo apt install xutils-dev -y
+		export XORG_CFLAGS="-I/usr/include/xorg -I/usr/include/X11"
+		export XORG_LIBS="-L/usr/lib/xorg -L/usr/lib/X11"
 		cd usr/src/xf86-input-nextwindow-0.3.4
 		chmod +x autogen.sh ; ./autogen.sh
 		sudo make
