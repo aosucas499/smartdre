@@ -29,7 +29,7 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 		else
 			echo "Smartboard EOS no instalado"
 			notify-send "Smartboard EOS no instalado"
-			zenity --error \
+			zenity --info \
        			--title="Smartboard EOS no instalado" \
       			--width=500 \
       			#--text="Instale la aplicación <b>Pizarra Smartboard</b> desde el centro de software EducaAndOS y vuelva a ejecutar esta instalación"
@@ -42,7 +42,7 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 			echo "deb http://downloads01.smarttech.com/software/linux/nb-for-ubuntu-20 stable non-free" > smartboard.list
 			sudo mv smartboard.list /etc/apt/sources.list.d/smartboard.list
 			sudo apt-get update -y
-			sudo apt-get install smart-product-drivers smart-notebook
+			sudo apt-get install smart-product-drivers smart-notebook 
 			sudo apt install -f -y
 			sudo rm /etc/apt/sources.list.d/smartboard.list
 			sudo rm swbuild.asc
@@ -55,7 +55,7 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 		sudo apt update -y
 		sudo apt-get install git -y
 		sudo apt-get install dkms build-essential autoconf xutils-dev libtool xserver-xorg-dev libc6-i386 pkg-config evtest -y
-		sudo cp custom.conf /etc/gdm3/
+		#sudo cp custom.conf /etc/gdm3/
 		git clone https://github.com/aosucas499/nwfermi-ubuntu22.04
 		cd nwfermi*
 		sudo dkms unbuild nwfermi/0.6.5.0 --all
