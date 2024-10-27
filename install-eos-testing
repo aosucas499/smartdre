@@ -32,8 +32,6 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 			zenity --info \
        			--title="Smartboard EOS no instalado" \
       			--width=500 \
-      			#--text="Instale la aplicación <b>Pizarra Smartboard</b> desde el centro de software EducaAndOS y vuelva a ejecutar esta instalación"
-			#screen -d -m gnome-software --details-pkg=smartboard-meta
 		        --text="Instalando respositorios dede <b>SmartBoard</b> e instalando Drivers"
 			wget https://downloads.smarttech.com/software/linux/nb-for-ubuntu-20/dists/swbuild.asc
 			gpg --show-keys --fingerprint swbuild.asc
