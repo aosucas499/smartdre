@@ -56,6 +56,12 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 		#sudo cp custom.conf /etc/gdm3/
 		git clone https://github.com/aosucas499/nwfermi-ubuntu22.04
 		cd nwfermi*
+		echo "Instalando drivers NWFERMI"
+		notify-send "Instalando drivers NWFERMI"
+		zenity --info \
+       		--title="Instalando drivers NWFERMI" \
+      		--width=500 \
+		--text="Drivers necesarios para el model <b>Smartboard 480</b>"
 		sudo dkms unbuild nwfermi/0.6.5.0 --all
 		sudo cp -p -r usr/src/nwfermi-0.7.0.1 /usr/src
 		sudo dkms build nwfermi/0.7.0.1
