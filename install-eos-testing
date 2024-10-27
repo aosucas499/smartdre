@@ -44,7 +44,6 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 			sudo apt install -f -y
 			sudo rm /etc/apt/sources.list.d/smartboard.list
 			sudo rm swbuild.asc
-			exit
 		fi
 
 #Instalación paquetes/drivers nwfermi en el sistema host
