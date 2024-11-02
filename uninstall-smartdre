@@ -88,6 +88,9 @@ sudo docker rmi lliurex/lliurex-smart
 
 sudo apt purge --remove nwfermi-daemon nwfermi-module nwfermi-module-host nwfermi-module-host-pointer xf86-input-nextwindow -y
 
+dkms unbuild nwfermi/0.6.5.0 --all
+dkms unbuild nwfermi/0.7.0.1 --all
+
 sudo apt purge --remove zero-lliurex-smart lliurex-smart zero-lliurex-docker -y
 
 sudo rm /etc/apt/sources.list.d/docker.list
