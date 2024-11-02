@@ -61,6 +61,11 @@ DESKTOP=$XDG_CURRENT_DESKTOP
        		--title="Instalando drivers NWFERMI" \
       		--width=500 \
 		--text="Drivers necesarios para el model <b>Smartboard 480</b>"
+  sudo apt-get purge --remove nwfermi-daemon -y
+  sudo apt-get purge --remove nwfermi-module -y
+  sudo apt-get purge --remove nwfermi-module-host -y
+  sudo apt-get purge --remove nwfermi-module-host-pointer -y
+  sudo apt-get purge --remove xf86-input-nextwindow -y
 		sudo dkms uninstall nwfermi/0.6.5.0 
 		sudo cp -p -r usr/src/nwfermi-0.7.0.1 /usr/src
 		sudo dkms build nwfermi/0.7.0.1
