@@ -86,7 +86,7 @@ sudo docker rmi aosucas499/smartdre:0.1
 
 sudo docker rmi lliurex/lliurex-smart
 
-sudo apt purge --remove nwfermi-daemon nwfermi-module xf86-input-nextwindow -y
+sudo apt purge --remove nwfermi-daemon nwfermi-module nwfermi-module-host nwfermi-module-host-pointer xf86-input-nextwindow -y
 
 sudo apt purge --remove zero-lliurex-smart lliurex-smart zero-lliurex-docker -y
 
