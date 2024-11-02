@@ -40,7 +40,7 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 			echo "deb http://downloads01.smarttech.com/software/linux/nb-for-ubuntu-20 stable non-free" > smartboard.list
 			sudo mv smartboard.list /etc/apt/sources.list.d/smartboard.list
 			sudo apt-get update -y
-			sudo apt-get install smart-product-drivers smart-notebook -y
+			sudo apt-get install smart-product-drivers -y
 			sudo apt install -f -y
 			sudo rm /etc/apt/sources.list.d/smartboard.list
 			sudo rm swbuild.asc
