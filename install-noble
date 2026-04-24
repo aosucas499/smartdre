@@ -6,7 +6,7 @@ clear
 ROJO="\033[1;31m"
 NORMAL="\033[0m"
 AZUL="\033[1;34m"
-DISTRO=$(lsb_release -cs)
+DISTRO=$(lsb_release -cs 2>/dev/null)
 DESKTOP=$XDG_CURRENT_DESKTOP
 
 # Copia el script en el sistema que comprueba que existe la extensión gnome appindicator 
