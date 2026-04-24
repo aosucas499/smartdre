@@ -1,0 +1,161 @@
+#! /bin/bash
+
+clear
+# Variables 
+#
+ROJO="\033[1;31m"
+NORMAL="\033[0m"
+AZUL="\033[1;34m"
+DISTRO=$(lsb_release -cs)
+DESKTOP=$XDG_CURRENT_DESKTOP
+
+# Copia el script en el sistema que comprueba que existe la extensión gnome appindicator 
+# En caso contrario la descarga y la instala en el usuario local
+
+if [[ $DESKTOP = ubuntu:GNOME || $DESKTOP = ubuntu || $DESKTOP = GNOME || $DESKTOP = UBUNTU || $DESKTOP = gnome ]]
+	then
+		echo ""
+        	echo -e "${ROJO}Escritorio basado en GNOME${NORMAL}"
+		echo ""
+        	echo -e "${ROJO}Desktop based on GNOME${NORMAL}"
+		echo ""
+		echo -e "${ROJO}Instalando extensión de GNOME appindicatorsupportrgcjonas${NORMAL}"
+		echo ""
+        	echo -e "${ROJO}Installing appindicatorsupportrgcjonas GNOME EXTENSION${NORMAL}"
+		echo ""
+		sleep 3
+		sudo cp check-appindicator-gnome-extension /usr/bin
+    		sudo chmod +x /usr/bin/check-appindicator-gnome-extension 
+		sudo cp check-appindicator-gnome-extension.desktop /etc/xdg/autostart/
+    	
+    	else
+        	echo ""
+        	echo -e "${ROJO}Escritorio no basado en GNOME${NORMAL}"
+		echo ""
+        	echo -e "${ROJO}Desktop not-based on GNOME${NORMAL}"
+		echo ""
+		echo ""
+		echo -e "${AZUL}Desktop environment $XDG_CURRENT_DESKTOP${NORMAL}"
+		sleep 4
+    	fi
+
+# Establecer la distribución en la que se basa el sistema host.
+# 
+	if [[ $DISTRO = focal || $DISTRO = ulyana || $DISTRO = ulyssa || $DISTRO = uma || $DISTRO = una ]]
+	then
+        	BASED=focal
+    	elif
+    	[[ $DISTRO = bionic || $DISTRO = tricia || $DISTRO = tina || $DISTRO = tessa || $DISTRO = tara ]]
+    	then
+        	BASED=bionic
+      elif
+    	[[ $DISTRO = jammy || $DISTRO = vanessa || $DISTRO = vera || $DISTRO = victoria || $DISTRO = virginia ]]
+    	then
+        	BASED=jammy
+      elif
+    	[[ $DISTRO = noble || $DISTRO = wilma || $DISTRO = w* || $DISTRO = w* || $DISTRO = w* ]]
+    	then
+        	BASED=noble
+    	else
+        	echo ""
+		echo -e "${ROJO}Esta instalación no es compatible con tu sistema${NORMAL}" 
+		echo ""
+		echo -e "${ROJO}This install process is not compatible with your system${NORMAL}"
+		echo ""
+		sleep 4
+		exit
+    	fi
+
+	echo ""
+	echo System codename $DISTRO
+    	echo ""
+	echo System based on Ubuntu $BASED
+	echo ""
+	sleep 2
+
+# Este script funciona en Ubuntu 18.04, bionic, Ubuntu 20.04, 22.04 Jammy, 24.04 Noble así como las derivadas en linux Mint.
+#
+	echo ""	
+	echo -e "${ROJO}Solicitando contraseña del usuario con derechos de administrador${NORMAL}"
+	echo ""
+	echo -e "${ROJO}Asking password of the user with administrations rights${NORMAL}"
+	echo ""
+	sudo echo ""
+	
+# Borrando antiguos archivos de smartdre o lliurex-smart
+#
+	echo ""	
+	echo -e "${ROJO}Borrando si existen archivos de anteriores instalaciones${NORMAL}"
+	echo ""
+	echo -e "${ROJO} Deleting if there are files from previous installations${NORMAL}"
+	echo ""
+	sudo chmod +x uninstall-smartdre
+	sudo ./uninstall-smartdre
+	
+#ELIMINADA INSTALACIÓN DE  paquetes/drivers nwfermi en el sistema host
+#
+
+# Instalar docker por repositorio
+#
+echo -e "${AZUL}Instalando Docker y dependencias del sistema...${NORMAL}"
+sudo apt update
+# Instalamos docker.io (mantenido por Ubuntu) que es más sencillo y estable que el de docker.com
+sudo apt install -y docker.io x11-xserver-utils python3-pip libnotify-bin
+sudo usermod -aG docker $USER	
+	
+# Descarga la imagen docker
+#
+	echo ""
+	echo -e "${AZUL}Descargando la imagen docker que contiene los drivers de la pizarra...${NORMAL}"
+	echo ""
+	echo -e "${AZUL}Downloading the docker image with the board drivers...${NORMAL}"
+	echo ""
+	sudo docker pull aosucas499/smartdre:eos
+
+# Hacer la aplicación iniciable en cada reinicio y usable para cualquier usuario sin "sudo"
+#
+	echo ""
+	echo -e "${AZUL}Configurando la app para que arranque en cada inicio de sesión...${NORMAL}"
+	echo ""
+	echo -e "${AZUL}Settings up the app to boot at init...${NORMAL}"
+	echo ""
+	sudo cp smart-dre-noble /usr/bin
+    	sudo chmod +x /usr/bin/smart-dre-noble
+    	sudo chown root:root zz-smartdre
+    	sudo chmod 0440 zz-smartdre
+    	sudo cp zz-smartdre /etc/sudoers.d/ 
+    	sudo cp smartdre.desktop /etc/xdg/autostart/
+    	sudo cp smartdre.desktop /usr/share/applications/
+    	
+# Crear apps y links para orientar y el panel de control de la pizarra en sistemas sin el icono en la barra de tareas
+# Por ejemplo Ubuntu Focal y EducaAndOS
+#	
+	sudo cp orient /usr/bin
+    	sudo chmod +x /usr/bin/orient
+    	sudo chown root:root zz-orient
+    	sudo chmod 0440 zz-orient
+    	sudo cp zz-orient /etc/sudoers.d/ 
+    	sudo cp smartdre-orient.desktop /usr/share/applications/
+    	
+    	sudo cp controlpanel /usr/bin
+    	sudo chmod +x /usr/bin/controlpanel
+    	sudo chown root:root zz-controlpanel
+    	sudo chmod 0440 zz-controlpanel
+    	sudo cp zz-controlpanel /etc/sudoers.d/ 
+    	sudo cp smartdre-controlpanel.desktop /usr/share/applications/
+	
+# Añadir iconos originales al sistema
+#
+	sudo cp icons/* /usr/share/icons
+	
+# Notificaciones al terminar
+#
+	echo ""
+	echo -e "${ROJO}Reinicie el equipo para que se ejecute la aplicación${NORMAL}"
+	echo ""
+	sudo notify-send "Reinicie el equipo para que se ejecute la aplicación"
+	
+# Borrar los repositorios de git y archivos de instalación
+#
+	cd ..
+	sudo rm -r smartdre
