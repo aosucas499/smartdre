@@ -119,8 +119,8 @@ sudo usermod -aG docker $USER
 	echo ""
 	echo -e "${AZUL}Settings up the app to boot at init...${NORMAL}"
 	echo ""
-	sudo cp smart-dre-noble /usr/bin
-    	sudo chmod +x /usr/bin/smart-dre-noble
+	sudo cp smart-dre-noble /usr/bin/smartdre
+    	sudo chmod +x /usr/bin/smartdre
     	sudo chown root:root zz-smartdre
     	sudo chmod 0440 zz-smartdre
     	sudo cp zz-smartdre /etc/sudoers.d/ 
