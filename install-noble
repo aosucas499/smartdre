@@ -53,7 +53,7 @@ if [[ $DESKTOP = ubuntu:GNOME || $DESKTOP = ubuntu || $DESKTOP = GNOME || $DESKT
     	then
         	BASED=jammy
       elif
-    	[[ $DISTRO = noble || $DISTRO = wilma || $DISTRO = w* || $DISTRO = w* || $DISTRO = w* ]]
+    	[[ $DISTRO = noble || $DISTRO = wilma || $DISTRO = xia || $DISTRO = zara || $DISTRO = zena ]]
     	then
         	BASED=noble
     	else
