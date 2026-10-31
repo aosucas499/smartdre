@@ -72,6 +72,8 @@ sudo docker rmi aosucas499/smartdre:testing
 
 #sudo docker rmi aosucas499/smartdre
 
+sudo docker rmi aosucas499/smartdre:eos
+
 sudo docker rmi aosucas499/smartdre:0.6
 
 sudo docker rmi aosucas499/smartdre:0.5
