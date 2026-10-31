@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Terminar el script inmediatamente si ocurre un error
+set -e
+
+# Colores para salida en consola
+AZUL="\033[1;34m"
+VERDE="\033[1;32m"
+ROJO="\033[1;31m"
+NORMAL="\033[0m"
+
+echo -e "${AZUL}====================================================${NORMAL}"
+echo -e "${AZUL}    INSTALACIÓN OFICIAL DRIVERS SMART BOARD         ${NORMAL}"
+echo -e "${AZUL}====================================================${NORMAL}"
+
+# Crear directorio temporal para la descarga de claves
+TEMP_DIR="/tmp/smartboard_official"
+mkdir -p "$TEMP_DIR"
+cd "$TEMP_DIR"
+
+echo -e "${VERDE}1. Descargando clave GPG de SMART...${NORMAL}"
+wget -q https://downloads.smarttech.com/software/linux/nb-for-ubuntu-20/dists/swbuild.asc -O swbuild.asc
+
+# Convertir la clave al formato gpg moderno (compatible con Ubuntu 24.04 / 24.10)
+gpg --dearmor < swbuild.asc | sudo tee /etc/apt/trusted.gpg.d/smartboard.gpg > /dev/null
+
+echo -e "${VERDE}2. Añadiendo repositorio oficial de SMART...${NORMAL}"
+echo "deb http://downloads01.smarttech.com/software/linux/nb-for-ubuntu-20 stable non-free" | sudo tee /etc/apt/sources.list.d/smartboard.list > /dev/null
+
+echo -e "${VERDE}3. Instalando smart-product-drivers...${NORMAL}"
+sudo apt-get update -y
+export DEBIAN_FRONTEND=noninteractive
+sudo apt-get install -y smart-product-drivers || sudo apt-get install -f -y
+
+echo -e "${VERDE}4. Limpiando repositorio y archivos temporales...${NORMAL}"
+sudo rm -f /etc/apt/sources.list.d/smartboard.list
+sudo rm -f /etc/apt/trusted.gpg.d/smartboard.gpg
+cd /tmp
+rm -rf "$TEMP_DIR"
+
+# Refrescar listas APT tras eliminar el repositorio temporal
+sudo apt-get update -qq
+
+echo -e "${AZUL}====================================================${NORMAL}"
+echo -e "${VERDE}Proceso completado. Drivers oficiales instalados.${NORMAL}"
+echo -e "${AZUL}====================================================${NORMAL}"
