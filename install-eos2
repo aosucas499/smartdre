@@ -25,18 +25,10 @@ DESKTOP=$XDG_CURRENT_DESKTOP
 # Instalar docker por repositorio
 #
 #echo -e "${AZUL}Instalando Docker y dependencias del sistema...${NORMAL}"
-#sudo apt update
-# Instalamos docker.io (mantenido por Ubuntu) que es más sencillo y estable que el de docker.com
-#sudo apt install -y docker.io x11-xserver-utils python3-pip libnotify-bin
-#sudo usermod -aG docker $USER	
-
-# Instala docker por educaandos repo
-#
-echo -e "${AZUL}Instalando Docker y dependencias del sistema...${NORMAL}"
 sudo apt update
-sudo apt install -y docker-desktop
+# Instalamos docker.io (mantenido por Ubuntu) que es más sencillo y estable que el de docker.com
+sudo apt install -y docker.io x11-xserver-utils python3-pip libnotify-bin
 sudo usermod -aG docker $USER	
-
 
 # Descarga la imagen docker
 #
