@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# ==============================================================================
+# LANZADOR DE DRIVERS SMART BOARD (Docker)
+# Sistema: EducaAndOS v2 / GuadaMint (Requiere sesión Xorg)
+# ==============================================================================
+
+# 1. Comprobación preventiva del entorno gráfico
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    echo "=========================================================================="
+    echo "[AVISO] La sesión actual es Wayland."
+    echo "SMART Ink ('Escribir encima') requiere la sesión 'EducaAndOS sobre Xorg'."
+    echo "=========================================================================="
+fi
+
+# 2. Permitir acceso al servidor X11 local
+xhost +local:root >/dev/null 2>&1
+xhost +local: >/dev/null 2>&1
+
+CONTAINER_NAME="smartboard"
+IMAGE_NAME="aosucas499/smartdre:eos"
+
+# Localizar archivo de credenciales X11 del usuario actual
+XAUTH=${XAUTHORITY:-$HOME/.Xauthority}
+
+# 3. Limpieza de instancias obsoletas (sin mostrar errores si no existen)
+OLD_CONTAINERS="smartboard-0.3 smartboard-0.4 smartboard-0.5 smartboard-0.6 testing"
+sudo docker stop $OLD_CONTAINERS >/dev/null 2>&1
+sudo docker rm $OLD_CONTAINERS >/dev/null 2>&1
+
+# 4. Despliegue / Arranque del contenedor
+if sudo docker ps -a --format '{{.Names}}' | grep -Eq "^${CONTAINER_NAME}\$"; then
+    echo "Iniciando contenedor SMART Board existente..."
+    sudo docker start ${CONTAINER_NAME}
+else
+    echo "Creando e iniciando nuevo contenedor SMART Board..."
+    sudo docker run -d \
+        --name ${CONTAINER_NAME} \
+        --privileged \
+        --net=host \
+        --ipc=host \
+        --device /dev/dri \
+        --device /dev/snd \
+        -e DISPLAY="$DISPLAY" \
+        -e XAUTHORITY="$XAUTH" \
+        -v "$XAUTH:$XAUTH:ro" \
+        -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+        -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \
+        -v /dev:/dev \
+        ${IMAGE_NAME}
+fi
+
+echo "Drivers SMART Board iniciados correctamente."
