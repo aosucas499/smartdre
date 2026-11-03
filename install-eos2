@@ -1,88 +1,143 @@
-#! /bin/bash
+#!/bin/bash
+
+# ==============================================================================
+# SCRIPT DE INSTALACIÓN DRIVERS SMART BOARD (Docker)
+# Compatible con: EducaAndOS v2 / GuadaMint / Ubuntu 24.04 LTS
+# ==============================================================================
 
 clear
-# Variables 
-#
+
+# Definición de colores
 ROJO="\033[1;31m"
-NORMAL="\033[0m"
+VERDE="\033[1;32m"
 AZUL="\033[1;34m"
-DISTRO=$(lsb_release -cs 2>/dev/null)
-DESKTOP=$XDG_CURRENT_DESKTOP
-	
-# Borrando antiguos archivos de smartdre o lliurex-smart
-#
-	echo ""	
-	echo -e "${ROJO}Borrando si existen archivos de anteriores instalaciones${NORMAL}"
-	echo ""
-	echo -e "${ROJO} Deleting if there are files from previous installations${NORMAL}"
-	echo ""
-	sudo chmod +x uninstall-smartdre
-	sudo ./uninstall-smartdre
-	
-#ELIMINADA INSTALACIÓN DE  paquetes/drivers nwfermi en el sistema host
-#
+AMARILLO="\033[1;33m"
+NORMAL="\033[0m"
 
-# Instalar docker por repositorio
-#
-#echo -e "${AZUL}Instalando Docker y dependencias del sistema...${NORMAL}"
-sudo apt update
-# Instalamos docker.io (mantenido por Ubuntu) que es más sencillo y estable que el de docker.com
-sudo apt install -y docker.io x11-xserver-utils python3-pip libnotify-bin
-sudo usermod -aG docker $USER	
+# Obtener la ruta real de la carpeta donde está este script
+SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+cd "$SCRIPT_DIR" || exit 1
 
-# Descarga la imagen docker
-#
-	echo ""
-	echo -e "${AZUL}Descargando la imagen docker que contiene los drivers de la pizarra...${NORMAL}"
-	echo ""
-	echo -e "${AZUL}Downloading the docker image with the board drivers...${NORMAL}"
-	echo ""
-	sudo docker pull aosucas499/smartdre:eos
+REAL_USER=${SUDO_USER:-$USER}
 
-# Hacer la aplicación iniciable en cada reinicio y usable para cualquier usuario sin "sudo"
-#
-	echo ""
-	echo -e "${AZUL}Configurando la app para que arranque en cada inicio de sesión...${NORMAL}"
-	echo ""
-	echo -e "${AZUL}Settings up the app to boot at init...${NORMAL}"
-	echo ""
-	sudo cp smartdre-eos2 /usr/bin/smartdre
-    	sudo chmod +x /usr/bin/smartdre
-    	sudo chown root:root zz-smartdre
-    	sudo chmod 0440 zz-smartdre
-    	sudo cp zz-smartdre /etc/sudoers.d/ 
-    	sudo cp smartdre.desktop /etc/xdg/autostart/
-    	sudo cp smartdre.desktop /usr/share/applications/
-    	
-# Crear apps y links para orientar y el panel de control de la pizarra en sistemas sin el icono en la barra de tareas
-# Por ejemplo Ubuntu Focal y EducaAndOS
-#	
-	sudo cp orient /usr/bin
-    	sudo chmod +x /usr/bin/orient
-    	sudo chown root:root zz-orient
-    	sudo chmod 0440 zz-orient
-    	sudo cp zz-orient /etc/sudoers.d/ 
-    	sudo cp smartdre-orient.desktop /usr/share/applications/
-    	
-    	sudo cp controlpanel /usr/bin
-    	sudo chmod +x /usr/bin/controlpanel
-    	sudo chown root:root zz-controlpanel
-    	sudo chmod 0440 zz-controlpanel
-    	sudo cp zz-controlpanel /etc/sudoers.d/ 
-    	sudo cp smartdre-controlpanel.desktop /usr/share/applications/
-	
-# Añadir iconos originales al sistema
-#
-	sudo cp icons/* /usr/share/icons
-	
-# Notificaciones al terminar
-#
-	echo ""
-	echo -e "${ROJO}Reinicie el equipo para que se ejecute la aplicación${NORMAL}"
-	echo ""
-	sudo notify-send "Reinicie el equipo para que se ejecute la aplicación"
-	
-# Borrar los repositorios de git y archivos de instalación
-#
-	cd ..
-	sudo rm -r smartdre
+echo -e "${AZUL}====================================================================${NORMAL}"
+echo -e "${AZUL}     INSTALADOR DE CONTROLADORES SMART BOARD - EDUCAANDOS V2       ${NORMAL}"
+echo -e "${AZUL}====================================================================${NORMAL}"
+echo ""
+
+# 1. Borrado de instalaciones antiguas
+echo -e "${ROJO}--> Eliminando instalaciones anteriores de SMART Board...${NORMAL}"
+if [ -f "./uninstall-smartdre" ]; then
+    chmod +x ./uninstall-smartdre
+    ./uninstall-smartdre
+fi
+
+# 2. Instalación de Docker y dependencias
+echo ""
+echo -e "${AZUL}--> Instalando Docker y dependencias gráficas del sistema...${NORMAL}"
+apt-get update -qq
+apt-get install -y docker.io x11-xserver-utils libnotify-bin
+
+# Añadir al usuario real al grupo docker
+if [ -n "$REAL_USER" ] && [ "$REAL_USER" != "root" ]; then
+    usermod -aG docker "$REAL_USER"
+fi
+
+# 3. Descarga de la imagen de Docker
+echo ""
+echo -e "${AZUL}--> Descargando la imagen Docker con los controladores (aosucas499/smartdre:eos)...${NORMAL}"
+docker pull aosucas499/smartdre:eos
+
+# 4. Copia de ejecutables, reglas sudoers y lanzadores
+echo ""
+echo -e "${AZUL}--> Configurando accesos directos, reglas de ejecución y autostart...${NORMAL}"
+
+# Script principal
+if [ -f "smartdre-eos2" ]; then
+    cp smartdre-eos2 /usr/bin/smartdre
+    chmod +x /usr/bin/smartdre
+fi
+
+if [ -f "zz-smartdre" ]; then
+    cp zz-smartdre /etc/sudoers.d/
+    chown root:root /etc/sudoers.d/zz-smartdre
+    chmod 0440 /etc/sudoers.d/zz-smartdre
+fi
+
+if [ -f "smartdre.desktop" ]; then
+    cp smartdre.desktop /etc/xdg/autostart/
+    cp smartdre.desktop /usr/share/applications/
+fi
+
+# Herramienta de Orientación / Calibración
+if [ -f "orient" ]; then
+    cp orient /usr/bin/orient
+    chmod +x /usr/bin/orient
+fi
+
+if [ -f "zz-orient" ]; then
+    cp zz-orient /etc/sudoers.d/
+    chown root:root /etc/sudoers.d/zz-orient
+    chmod 0440 /etc/sudoers.d/zz-orient
+fi
+
+if [ -f "smartdre-orient.desktop" ]; then
+    cp smartdre-orient.desktop /usr/share/applications/
+fi
+
+# Panel de Control SMART
+if [ -f "controlpanel" ]; then
+    cp controlpanel /usr/bin/controlpanel
+    chmod +x /usr/bin/controlpanel
+fi
+
+if [ -f "zz-controlpanel" ]; then
+    cp zz-controlpanel /etc/sudoers.d/
+    chown root:root /etc/sudoers.d/zz-controlpanel
+    chmod 0440 /etc/sudoers.d/zz-controlpanel
+fi
+
+if [ -f "smartdre-controlpanel.desktop" ]; then
+    cp smartdre-controlpanel.desktop /usr/share/applications/
+fi
+
+# Copiar iconos del sistema
+if [ -d "icons" ]; then
+    cp -r icons/* /usr/share/icons/ 2>/dev/null
+fi
+
+# 5. Configuración automática de sesión Xorg (Desactivación de Wayland)
+echo ""
+echo -e "${AMARILLO}--> Configurando el gestor de pantalla (GDM3) para usar Xorg/X11...${NORMAL}"
+if [ -f "/etc/gdm3/custom.conf" ]; then
+    # Descomentar o forzar WaylandEnable=false
+    if grep -q "WaylandEnable" /etc/gdm3/custom.conf; then
+        sed -i 's/^#*WaylandEnable=.*/WaylandEnable=false/' /etc/gdm3/custom.conf
+    else
+        sed -i '/\[daemon\]/a WaylandEnable=false' /etc/gdm3/custom.conf
+    fi
+    echo -e "${VERDE}    [OK] Wayland desactivado en /etc/gdm3/custom.conf${NORMAL}"
+fi
+
+# 6. Limpieza segura del directorio de instalación
+echo ""
+echo -e "${AZUL}--> Limpiando archivos temporales de instalación...${NORMAL}"
+cd /tmp
+rm -rf "$SCRIPT_DIR"
+
+# 7. Finalización y aviso de reinicio
+echo ""
+echo -e "${VERDE}====================================================================${NORMAL}"
+echo -e "${VERDE}   INSTALACIÓN COMPLETADA CORRECTAMENTE                             ${NORMAL}"
+echo -e "${AMARILLO}   ATENCIÓN: Se ha configurado el sistema para arrancar en Xorg.    ${NORMAL}"
+echo -e "${ROJO}   REINICIE EL EQUIPO AHORA para aplicar los cambios y activar    ${NORMAL}"
+echo -e "${ROJO}   la función de escritura transparente (SMART Ink).                ${NORMAL}"
+echo -e "${VERDE}====================================================================${NORMAL}"
+echo ""
+
+# Notificación en el escritorio si hay sesión activa
+if [ -n "$REAL_USER" ]; then
+    sudo -u "$REAL_USER" DISPLAY=:0 notify-send -i system-reboot \
+        "Instalación SMART Board" \
+        "Reinicie el equipo para completar la configuración e iniciar sobre Xorg." 2>/dev/null
+fi
