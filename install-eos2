@@ -37,7 +37,7 @@ sudo usermod -aG docker $USER
 	echo ""
 	echo -e "${AZUL}Downloading the docker image with the board drivers...${NORMAL}"
 	echo ""
-	sudo docker pull aosucas499/smartdre:eos
+	sudo docker pull aosucas499/smartdre
 
 # Hacer la aplicación iniciable en cada reinicio y usable para cualquier usuario sin "sudo"
 #
