@@ -37,7 +37,7 @@ sudo usermod -aG docker $USER
 	echo ""
 	echo -e "${AZUL}Downloading the docker image with the board drivers...${NORMAL}"
 	echo ""
-	sudo docker pull aosucas499/smartdre
+	sudo docker pull aosucas499/smartdre:eos
 
 # Hacer la aplicación iniciable en cada reinicio y usable para cualquier usuario sin "sudo"
 #
@@ -46,7 +46,7 @@ sudo usermod -aG docker $USER
 	echo ""
 	echo -e "${AZUL}Settings up the app to boot at init...${NORMAL}"
 	echo ""
-	sudo cp smart-dre-noble /usr/bin/smartdre
+	sudo cp smartdre-eos2 /usr/bin/smartdre
     	sudo chmod +x /usr/bin/smartdre
     	sudo chown root:root zz-smartdre
     	sudo chmod 0440 zz-smartdre
