@@ -32,11 +32,19 @@ if [ -f "./uninstall-smartdre" ]; then
     ./uninstall-smartdre
 fi
 
-# 2. Instalación de Docker y dependencias
+# 2. Instalación de bridge-utils (Guadalinex), Docker y dependencias
 echo ""
+echo -e "${AZUL}--> Descargando e instalando bridge-utils desde repositorio Guadalinex...${NORMAL}"
+DEB_URL="http://centros.edu.guadalinex.org/Edu/oracularsc/pool/main/b/bridge-utils/bridge-utils_1.7.1-2ubuntu1_amd64.deb"
+DEB_FILE="/tmp/bridge-utils_1.7.1-2ubuntu1_amd64.deb"
+
+wget -qO "$DEB_FILE" "$DEB_URL" || curl -fsSL "$DEB_URL" -o "$DEB_FILE"
+dpkg -i "$DEB_FILE"
+rm -f "$DEB_FILE"
+
 echo -e "${AZUL}--> Instalando Docker y dependencias gráficas del sistema...${NORMAL}"
 apt-get update -qq
-apt-get install -y docker.io x11-xserver-utils libnotify-bin
+apt-get install -f -y docker.io x11-xserver-utils libnotify-bin
 
 # Añadir al usuario real al grupo docker
 if [ -n "$REAL_USER" ] && [ "$REAL_USER" != "root" ]; then
