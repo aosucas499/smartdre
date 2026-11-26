@@ -5,12 +5,14 @@
 # Sistema: EducaAndOS v2 / GuadaMint (Requiere sesión Xorg)
 # ==============================================================================
 
-# 1. Comprobación preventiva del entorno gráfico
+# 1. Bloqueo preventivo si la sesión es Wayland (evita crear contenedores rotos)
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     echo "=========================================================================="
-    echo "[AVISO] La sesión actual es Wayland."
-    echo "SMART Ink ('Escribir encima') requiere la sesión 'EducaAndOS sobre Xorg'."
+    echo "[ERROR] La sesión actual es Wayland."
+    echo "SMART Ink ('Escribir encima') requiere reiniciar e iniciar en Xorg."
+    echo "No se iniciará el contenedor hasta que arranque en sesión X11."
     echo "=========================================================================="
+    exit 1
 fi
 
 # 2. Permitir acceso al servidor X11 local
@@ -20,31 +22,34 @@ xhost +local: >/dev/null 2>&1
 CONTAINER_NAME="smartboard"
 IMAGE_NAME="aosucas499/smartdre:eos"
 
-# Localizar archivo de credenciales X11 del usuario actual
-XAUTH=${XAUTHORITY:-$HOME/.Xauthority}
-
-# 3. Limpieza de instancias obsoletas (sin mostrar errores si no existen)
-OLD_CONTAINERS="smartboard-0.3 smartboard-0.4 smartboard-0.5 smartboard-0.6 testing"
-sudo docker stop $OLD_CONTAINERS >/dev/null 2>&1
-sudo docker rm $OLD_CONTAINERS >/dev/null 2>&1
-
-# 4. Despliegue / Arranque del contenedor
-if sudo docker ps -a --format '{{.Names}}' | grep -Eq "^${CONTAINER_NAME}\$"; then
-    echo "Iniciando contenedor SMART Board existente..."
-    sudo docker start ${CONTAINER_NAME}
-else
-    echo "Creando e iniciando nuevo contenedor SMART Board..."
-    sudo docker run -d \
-        --name ${CONTAINER_NAME} \
-        --privileged \
-        --net=host \
-        -e DISPLAY="$DISPLAY" \
-        -e XAUTHORITY="$XAUTH" \
-        -v "$XAUTH:$XAUTH:ro" \
-        -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-        -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \
-        -v /dev:/dev \
-        ${IMAGE_NAME}
+# Localizar archivo de credenciales X11 vigente de la sesión actual
+USER_ID=$(id -u)
+XAUTH="${XAUTHORITY}"
+if [ -z "$XAUTH" ] || [ ! -f "$XAUTH" ]; then
+    XAUTH=$(find "/run/user/${USER_ID}" -maxdepth 2 -name "Xauthority" -o -name ".mutter-Xwaylandauth.*" 2>/dev/null | head -n 1)
 fi
+[ -z "$XAUTH" ] || [ ! -f "$XAUTH" ] && XAUTH="$HOME/.Xauthority"
 
-echo "Drivers SMART Board iniciados correctamente."
+# 3. Limpieza de instancias obsoletas y del contenedor anterior (evita rutas XAUTH caducadas)
+OLD_CONTAINERS="smartboard-0.3 smartboard-0.4 smartboard-0.5 smartboard-0.6 testing ${CONTAINER_NAME}"
+sudo docker stop $OLD_CONTAINERS >/dev/null 2>&1
+sudo docker rm -f $OLD_CONTAINERS >/dev/null 2>&1
+
+# 4. Despliegue limpio del contenedor con el XAUTHORITY de la sesión activa
+echo "Iniciando controlador SMART Board..."
+if sudo docker run -d \
+    --name "${CONTAINER_NAME}" \
+    --privileged \
+    --net=host \
+    -e DISPLAY="${DISPLAY:-:0}" \
+    -e XAUTHORITY=/tmp/.Xauthority \
+    -v "${XAUTH}:/tmp/.Xauthority:ro" \
+    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+    -v /run/dbus/system_bus_socket:/run/dbus/system_bus_socket \
+    -v /dev:/dev \
+    "${IMAGE_NAME}"; then
+    echo "Drivers SMART Board iniciados correctamente."
+else
+    echo "[ERROR] No se pudo iniciar el contenedor SMART Board."
+    exit 1
+fi
