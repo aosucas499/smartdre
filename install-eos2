@@ -110,13 +110,22 @@ fi
 echo ""
 echo -e "${AMARILLO}--> Configurando el gestor de pantalla (GDM3) para usar Xorg/X11...${NORMAL}"
 if [ -f "/etc/gdm3/custom.conf" ]; then
-    # Descomentar o forzar WaylandEnable=false
     if grep -q "WaylandEnable" /etc/gdm3/custom.conf; then
         sed -i 's/^#*WaylandEnable=.*/WaylandEnable=false/' /etc/gdm3/custom.conf
     else
         sed -i '/\[daemon\]/a WaylandEnable=false' /etc/gdm3/custom.conf
     fi
     echo -e "${VERDE}    [OK] Wayland desactivado en /etc/gdm3/custom.conf${NORMAL}"
+fi
+
+# Forzar Xorg en AccountsService para usuarios existentes (usuario y administrador)
+if [ -d "/var/lib/AccountsService/users" ]; then
+    for user_file in /var/lib/AccountsService/users/*; do
+        [ -f "$user_file" ] || continue
+        if grep -q "^Session=" "$user_file"; then
+            sed -i 's/^Session=.*/Session=ubuntu-xorg/' "$user_file"
+        fi
+    done
 fi
 
 # 6. Limpieza segura del directorio de instalación
