@@ -38,9 +38,6 @@ else
         --name ${CONTAINER_NAME} \
         --privileged \
         --net=host \
-        --ipc=host \
-        --device /dev/dri \
-        --device /dev/snd \
         -e DISPLAY="$DISPLAY" \
         -e XAUTHORITY="$XAUTH" \
         -v "$XAUTH:$XAUTH:ro" \
