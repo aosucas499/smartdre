@@ -20,7 +20,7 @@ xhost +local:root >/dev/null 2>&1
 xhost +local: >/dev/null 2>&1
 
 CONTAINER_NAME="smartboard"
-IMAGE_NAME="aosucas499/smartdre:eos"
+IMAGE_NAME="aosucas499/smartdre"
 
 # Localizar archivo de credenciales X11 vigente de la sesión actual
 USER_ID=$(id -u)
