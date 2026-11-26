@@ -46,7 +46,7 @@ fi
 # 3. Descarga de la imagen de Docker
 echo ""
 echo -e "${AZUL}--> Descargando la imagen Docker con los controladores (aosucas499/smartdre:eos)...${NORMAL}"
-docker pull aosucas499/smartdre:eos
+docker pull aosucas499/smartdre
 
 # 4. Copia de ejecutables, reglas sudoers y lanzadores
 echo ""
